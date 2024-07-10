@@ -9,12 +9,14 @@ import Foundation
 import CoreLocation
 
 
-class TempModel : NSObject, ObservableObject, CLLocationManagerDelegate{
+
+class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
     
-    private var locationManager : CLLocationManager?
+    var locationManager : CLLocationManager?
     
     @Published var longitude:Double = 0.0
     @Published var latitude:Double = 0.0
+    @Published var currentLocation:  CLLocation?
     
     override init() {
         super.init()
@@ -39,6 +41,7 @@ class TempModel : NSObject, ObservableObject, CLLocationManagerDelegate{
             longitude = location.coordinate.longitude
             print("Lat : \(latitude)")
             print("Long : \(longitude)")
+            currentLocation = location
         }
     }
     

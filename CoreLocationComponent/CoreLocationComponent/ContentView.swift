@@ -1,21 +1,50 @@
 //
 //  ContentView.swift
-//  CoreLocationComponent
+//  TestWeatherApp
 //
-//  Created by Christian Aldrich Darrien on 10/07/24.
+//  Created by Nathanael Juan Gauthama on 09/07/24.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var weatherKitManager = WeatherManager()
+    @StateObject var locationManager = LocationManager()
+    
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
+            VStack {
+                Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
+                if let currentWeather = weatherKitManager.currentWeather {
+                    Text("Current Time: \(currentWeather.date.formatted())")
+                    Text("Current Weather: \(currentWeather.condition)")
+                }else {
+                    Text("Loading...")
+                }
+                ScrollView{
+                    ForEach(weatherKitManager.hourWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
+                        // Customize the view for each hourly weather data
+                        Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition)")
+                    }
+                    Text("\(weatherKitManager.hourWeather.count)")
+                }
+            }
+            .padding()
+            .task {
+                await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+            }
+            .onChange(of: locationManager.currentLocation) { newLocation in
+                            guard let newLocation = newLocation else { return }
+                            Task {
+                                await weatherKitManager.getWeather(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+                            }
+                        }
+        } else {
+            //dont have permission
+            Text("Error")
         }
-        .padding()
     }
 }
 
