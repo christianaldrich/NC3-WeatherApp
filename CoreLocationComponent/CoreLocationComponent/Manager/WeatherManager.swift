@@ -36,10 +36,25 @@ import WeatherKit
     var hourWeather: [HourWeather] {
             let currentDate = Date()
             let calendar = Calendar.current
-            let roundedDate = calendar.date(bySettingHour: calendar.component(.hour, from: currentDate), minute: 0, second: 0, of: currentDate)!
-
-            let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > roundedDate }
+            
+            // Start of today
+            let startOfToday = calendar.startOfDay(for: currentDate)
+            
+            // End of next day
+            let endOfNextDay = calendar.date(byAdding: .day, value: 2, to: startOfToday)!
+            
+            let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > currentDate && $0.date < endOfNextDay }
             
             return hourWeather ?? []
-    }
+        }
+    
+    var currentWeather: HourWeather? {
+            let currentDate = Date()
+            let calendar = Calendar.current
+        
+            let thisHour = calendar.date(byAdding: .hour, value: -1, to: currentDate)
+        let currentWeather = weather?.hourlyForecast.forecast.first { $0.date > thisHour ?? Date() && $0.date < calendar.date(byAdding: .hour, value: 1, to: thisHour ?? Date())! }
+            
+            return currentWeather
+        }
 }
