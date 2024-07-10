@@ -11,15 +11,22 @@ struct ContentView: View {
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
     
+    
     var body: some View {
         
         if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
             VStack {
                 Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
+                if let currentWeather = weatherKitManager.currentWeather {
+                    Text("Current Time: \(currentWeather.date.formatted())")
+                    Text("Current Weather: \(currentWeather.condition)")
+                }else {
+                    Text("Loading...")
+                }
                 ScrollView{
                     ForEach(weatherKitManager.hourWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
                         // Customize the view for each hourly weather data
-                        Text("\(hourWeatherWrapper.hourWeather.date): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance)")
+                        Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition)")
                     }
                     Text("\(weatherKitManager.hourWeather.count)")
                 }
