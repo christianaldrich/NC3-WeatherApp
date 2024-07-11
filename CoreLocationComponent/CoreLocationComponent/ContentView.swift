@@ -19,9 +19,9 @@ struct ContentView: View {
         if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
             VStack {
                 
-                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
-                
-                PlottingView(hourlyWeatherData: weatherKitManager.todayWeather)
+//                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
+//                
+//                PlottingView(hourlyWeatherData: weatherKitManager.todayWeather)
                 
                 HStack{
                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
@@ -43,7 +43,7 @@ struct ContentView: View {
                 
                 
                 
-                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.hourWeather)
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
                 
 //                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
                 
