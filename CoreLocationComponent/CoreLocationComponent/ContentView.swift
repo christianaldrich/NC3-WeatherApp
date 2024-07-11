@@ -45,6 +45,9 @@ struct ContentView: View {
                 
                 GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
                 
+                
+                OptimalTime(timeList: weatherKitManager.safeWeather)
+                
 //                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
                 
 //                Text("\(locationManager.cityName)")
