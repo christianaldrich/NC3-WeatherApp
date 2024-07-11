@@ -13,10 +13,12 @@ import WeatherKit
 struct GraphView: View {
     
     private let timeFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
-            return formatter
-        }()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
+        formatter.pmSymbol = "pm"
+        formatter.amSymbol = "am"
+        return formatter
+    }()
     
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
