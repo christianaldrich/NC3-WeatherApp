@@ -19,6 +19,10 @@ struct ContentView: View {
         if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
             VStack {
                 
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
+                
+                PlottingView(hourlyWeatherData: weatherKitManager.todayWeather)
+                
                 HStack{
                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
                         .resizable()
