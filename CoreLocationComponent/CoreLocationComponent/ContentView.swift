@@ -17,9 +17,9 @@ struct ContentView: View {
         if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
             VStack {
                 
-                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.hourWeather)
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
                 
-                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
+                PlottingView(hourlyWeatherData: weatherKitManager.todayWeather)
                 
                 Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
                 if let currentWeather = weatherKitManager.currentWeather {
@@ -29,11 +29,15 @@ struct ContentView: View {
                     Text("Loading...")
                 }
                 ScrollView{
-                    ForEach(weatherKitManager.hourWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
+                    ForEach(weatherKitManager.todayWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
                         // Customize the view for each hourly weather data
                         Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition.rawValue)")
                     }
-                    Text("\(weatherKitManager.hourWeather.count)")
+                    Text("\(weatherKitManager.todayWeather.count)")
+                    Text("Safe weather:")
+                    ForEach(weatherKitManager.safeWeather, id: \.id) { range in
+                        Text("\(range.startTime) - \(range.endTime)")
+                    }
                 }
             }
             .padding()
