@@ -44,6 +44,10 @@ import WeatherKit
             let endOfNextDay = calendar.date(byAdding: .day, value: 2, to: startOfToday)!
             
             let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > currentDate && $0.date < endOfNextDay }
+        
+            if let currentWeather = self.currentWeather {
+                return [currentWeather] + (hourWeather!)
+           }
             
             return hourWeather ?? []
         }
@@ -52,7 +56,7 @@ import WeatherKit
             let currentDate = Date()
             let calendar = Calendar.current
         
-            let thisHour = calendar.date(byAdding: .hour, value: -1, to: currentDate)
+        let thisHour = calendar.date(byAdding: .hour, value: -1, to: currentDate)
         let currentWeather = weather?.hourlyForecast.forecast.first { $0.date > thisHour ?? Date() && $0.date < calendar.date(byAdding: .hour, value: 1, to: thisHour ?? Date())! }
             
             return currentWeather

@@ -16,6 +16,11 @@ struct ContentView: View {
         
         if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
             VStack {
+                
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.hourWeather)
+                
+                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
+                
                 Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
                 if let currentWeather = weatherKitManager.currentWeather {
                     Text("Current Time: \(currentWeather.date.formatted())")

@@ -41,7 +41,11 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
             longitude = location.coordinate.longitude
             print("Lat : \(latitude)")
             print("Long : \(longitude)")
-            currentLocation = location
+            
+            DispatchQueue.main.async{
+                self.currentLocation = location
+            }
+            
         }
     }
     
