@@ -24,14 +24,14 @@ struct ContentView: View {
                 Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
                 if let currentWeather = weatherKitManager.currentWeather {
                     Text("Current Time: \(currentWeather.date.formatted())")
-                    Text("Current Weather: \(currentWeather.condition)")
+                    Text("Current Weather: \(currentWeather.condition.rawValue)")
                 }else {
                     Text("Loading...")
                 }
                 ScrollView{
                     ForEach(weatherKitManager.hourWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
                         // Customize the view for each hourly weather data
-                        Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition)")
+                        Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition.rawValue)")
                     }
                     Text("\(weatherKitManager.hourWeather.count)")
                 }
