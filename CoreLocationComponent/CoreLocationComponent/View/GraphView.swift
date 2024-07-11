@@ -12,6 +12,12 @@ import WeatherKit
 
 struct GraphView: View {
     
+    private let timeFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
+            return formatter
+        }()
+    
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
     
@@ -20,20 +26,20 @@ struct GraphView: View {
     var body: some View {
         
         VStack(alignment: .leading){
-            Text("Hourly Forecast")
+//            Text("Hourly Forecast")
             
             ScrollView(.horizontal){
-                HStack{
+                HStack(spacing:18){
                     ForEach(hourWeatherList, id: \.date){ hourWeatherItem in
                         VStack(spacing: 20){
-                            Text(hourWeatherItem.date.formatted(date: .omitted, time: .shortened))
+                            Text(timeFormatter.string(from: hourWeatherItem.date))
                             Image(systemName: "\(hourWeatherItem.symbolName).fill")
-                                .foregroundStyle(.yellow)
+                                .foregroundStyle(.black)
                             
                             //gnti sesuai indeks
                             
-                            Text(hourWeatherItem.temperature.formatted())
-                                .fontWeight(.medium)
+//                            Text(hourWeatherItem.temperature.formatted())
+//                                .fontWeight(.medium)
                         }
                         
                     }
@@ -42,10 +48,10 @@ struct GraphView: View {
         }
         .padding()
         .background{
-            Color.blue
+            Color.white
         }
         .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-        .foregroundStyle(.white)
+        .foregroundStyle(.black)
         
         
     }
