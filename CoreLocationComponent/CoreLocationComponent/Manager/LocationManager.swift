@@ -17,6 +17,7 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var longitude:Double = 0.0
     @Published var latitude:Double = 0.0
     @Published var currentLocation:  CLLocation?
+    @Published var cityName: String = "CUAKKK"
     
     override init() {
         super.init()
@@ -45,6 +46,23 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
             DispatchQueue.main.async{
                 self.currentLocation = location
             }
+            
+            let geocoder = CLGeocoder()
+            
+            geocoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
+                        if error == nil {
+                            if let firstLocation = placemarks?[0],
+                                let cityName = firstLocation.locality { // get the city name
+                                self?.locationManager!.stopUpdatingLocation()
+                                
+                                DispatchQueue.main.async{
+                                    self!.cityName = cityName
+                                }
+                                
+                            }
+                        }
+                    }
+            
             
         }
     }

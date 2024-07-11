@@ -11,6 +11,22 @@ import WeatherKit
 @MainActor class WeatherManager:ObservableObject {
     @Published var weather: Weather?
     
+    enum WeatherCondition{
+        case clear
+        case rain
+        case snow
+            // Add other cases as necessary
+
+        var description: String {
+            switch self {
+            case .clear: return "Clear"
+            case .rain: return "Rain"
+            case .snow: return "Snow"
+                // Add descriptions for other cases
+            }
+        }
+    }
+    
     func getWeather(latitude: Double, longitude: Double) {
         async {
             do {
