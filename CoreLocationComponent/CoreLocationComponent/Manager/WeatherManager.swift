@@ -80,6 +80,12 @@ import WeatherKit
             return hourWeather ?? []
         }
     
+    var allWeather: [HourWeather] {
+        let todayWeather = self.todayWeather
+        let tomorrowWeather = self.tomorrowWeather
+        return todayWeather + tomorrowWeather
+    }
+    
     var currentWeather: HourWeather? {
         let currentDate = Date()
         let calendar = Calendar.current
