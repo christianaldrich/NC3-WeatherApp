@@ -22,6 +22,7 @@
       }
     },
     "Error" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -70,6 +71,9 @@
           }
         }
       }
+    },
+    "Perimission not granted" : {
+
     },
     "to %@" : {
       "localizations" : {
