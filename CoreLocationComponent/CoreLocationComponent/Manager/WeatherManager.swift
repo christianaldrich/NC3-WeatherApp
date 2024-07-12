@@ -71,7 +71,7 @@ import WeatherKit
         }
     
     var safeWeather: [TimeRange] {
-        let todayWeather = self.todayWeather
+        let todayWeather = self.allWeather
         var timeRange: [TimeRange] = []
         var startDate: Date = Date.distantPast
         var endDate: Date = Date.distantPast
