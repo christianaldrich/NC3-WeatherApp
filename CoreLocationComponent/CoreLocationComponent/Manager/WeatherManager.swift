@@ -11,22 +11,6 @@ import WeatherKit
 @MainActor class WeatherManager:ObservableObject {
     @Published var weather: Weather?
     
-    enum WeatherCondition{
-        case clear
-        case rain
-        case snow
-            // Add other cases as necessary
-
-        var description: String {
-            switch self {
-            case .clear: return "Clear"
-            case .rain: return "Rain"
-            case .snow: return "Snow"
-                // Add descriptions for other cases
-            }
-        }
-    }
-    
     func getWeather(latitude: Double, longitude: Double) {
         async {
             do {
@@ -37,16 +21,6 @@ import WeatherKit
                 fatalError("\(error)")
             }
         }
-    }
-    
-    var symbol: String {
-        weather?.currentWeather.symbolName ?? "xmark"
-    }
-    
-    var temp: String {
-        let temp = weather?.currentWeather.temperature
-        let convertedTemp = temp?.converted(to: .celsius).description
-        return convertedTemp ?? "Connecting to Apple Weather Kit"
     }
     
     var todayWeather: [HourWeather] {

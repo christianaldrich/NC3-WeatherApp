@@ -17,7 +17,7 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var longitude:Double = 0.0
     @Published var latitude:Double = 0.0
     @Published var currentLocation:  CLLocation?
-    @Published var cityName: String = "CUAKKK"
+    @Published var cityName: String = "Somewhere"
     
     override init() {
         super.init()
