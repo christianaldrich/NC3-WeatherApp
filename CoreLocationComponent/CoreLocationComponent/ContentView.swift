@@ -43,7 +43,7 @@ struct ContentView: View {
                 
                 
                 
-                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                 
                 
                 OptimalTime(timeList: weatherKitManager.safeWeather)
