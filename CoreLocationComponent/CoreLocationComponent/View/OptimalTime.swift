@@ -25,27 +25,34 @@ struct OptimalTime: View {
                 .font(.system(size: 17, weight: .regular, design: .default))
                 .padding(.bottom, -10)
             
-            VStack (spacing: 10) {
-                ForEach(timeList, id: \.id) { timeListItem in
-                    ZStack{
-                        
-                        HStack {
-                            Text("\(timeFormatter.string(from: timeListItem.startTime))")
-                                .font(.system(size: 34, weight: .bold, design: .default))
+            VStack(spacing: 10) {
+                ForEach(Array(timeList.prefix(2).enumerated()), id: \.element.id) { index, timeListItem in
+                    if index == 0 {
+                        ZStack {
+                            HStack {
+                                Text("\(timeFormatter.string(from: timeListItem.startTime))")
+                                    .font(Font.custom("SF Pro", size: 34).weight(.bold))
+                                //TODO: implement SF Pro pake weight bold
+                                
+                                Text("to \(timeFormatter.string(from: timeListItem.endTime))")
+                                    .font(Font.custom("SF Pro", size: 34).weight(.bold))
+                            }
+                            .zIndex(1)
                             
+                            Rectangle()
+                                .frame(width: 242, height: 77)
+                                .cornerRadius(10)
+                                .foregroundColor(.descText)
+                        }
+                    } else {
+                        HStack {
+                            
+                            Text("or \(timeFormatter.string(from: timeListItem.startTime))")
+                                .font(Font.custom("SF Pro", size: 17).weight(.bold))
                             
                             Text("to \(timeFormatter.string(from: timeListItem.endTime))")
-                                .font(.system(size: 34, weight: .bold, design: .default))
-                            
+                                .font(Font.custom("SF Pro", size: 17).weight(.bold))
                         }
-                        .zIndex(1)
-                        
-                        
-                        Rectangle()
-                            .frame(width: 242, height: 77)
-                            .cornerRadius(10)
-                            .foregroundColor(.blue)
-                        
                     }
                 }
             }

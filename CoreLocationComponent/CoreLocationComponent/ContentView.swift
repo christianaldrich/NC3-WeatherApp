@@ -48,6 +48,8 @@ struct ContentView: View {
                 
                 OptimalTime(timeList: weatherKitManager.safeWeather)
                 
+//                Desc()
+                
 //                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
                 
 //                Text("\(locationManager.cityName)")
