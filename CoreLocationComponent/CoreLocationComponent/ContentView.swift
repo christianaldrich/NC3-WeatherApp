@@ -19,31 +19,44 @@ struct ContentView: View {
         if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
             VStack {
                 
-//                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
-//                
-//                PlottingView(hourlyWeatherData: weatherKitManager.todayWeather)
-                
-                HStack{
-                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "cloud")")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 63, height: 61)
-                        .foregroundStyle(.orange)
-                    
-                    VStack(alignment: .leading){
-                        Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
-                            .font(.title)
-                            .bold()
-                        Text("in \(locationManager.cityName)")
+                if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
+                    ProgressView()
+                } else {
+                    HStack{
+                        Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 63, height: 61)
+                            .foregroundStyle(.orange)
+                        
+                        VStack(alignment: .leading){
+                            Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
+                                .font(.title)
+                                .bold()
+                            Text("in \(locationManager.cityName)")
+                        }
+                        
                     }
+                         
+                    GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                     
+                    
+//                    OptimalTime(timeList: weatherKitManager.safeWeather)
+                    
+                    Desc(timeList: weatherKitManager.safeWeather)
                 }
                 
                 
                 
                 
                 
-                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.todayWeather)
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
+                
+                
+                
+                
+                
+//                Desc()
                 
 //                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
                 
@@ -74,9 +87,18 @@ struct ContentView: View {
                                 await weatherKitManager.getWeather(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
                             }
                         }
+            .onAppear{
+                Task{
+                    await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                Task{
+                    await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                }
+            }
         } else {
-            //dont have permission
-            Text("Error")
+            Text("Perimission not granted")
         }
     }
 }
