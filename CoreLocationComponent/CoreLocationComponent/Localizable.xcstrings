@@ -72,6 +72,9 @@
         }
       }
     },
+    "or %@" : {
+
+    },
     "Perimission not granted" : {
 
     },

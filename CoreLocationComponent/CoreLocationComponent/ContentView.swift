@@ -41,7 +41,9 @@ struct ContentView: View {
                     GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                     
                     
-                    OptimalTime(timeList: weatherKitManager.safeWeather)
+//                    OptimalTime(timeList: weatherKitManager.safeWeather)
+                    
+                    Desc(timeList: weatherKitManager.safeWeather)
                 }
                 
                 
@@ -51,7 +53,8 @@ struct ContentView: View {
                 GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                 
                 
-                OptimalTime(timeList: weatherKitManager.safeWeather)
+                
+                
                 
 //                Desc()
                 
