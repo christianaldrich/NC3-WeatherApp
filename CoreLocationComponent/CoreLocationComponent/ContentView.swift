@@ -24,7 +24,7 @@ struct ContentView: View {
 //                PlottingView(hourlyWeatherData: weatherKitManager.todayWeather)
                 
                 HStack{
-                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
+                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "cloud")")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 63, height: 61)
