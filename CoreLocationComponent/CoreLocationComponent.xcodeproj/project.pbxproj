@@ -11,6 +11,7 @@
 		0D8729182C3E43EC0077C46C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8729172C3E43EC0077C46C /* Weather.swift */; };
 		0D87291B2C3FB6020077C46C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D87291A2C3FB6020077C46C /* Time.swift */; };
 		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
+		631D4EDE2C40E335004C4FC9 /* Desc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* Desc.swift */; };
 		637113BF2C4009F5002D4C10 /* OptimalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637113BE2C4009F5002D4C10 /* OptimalTime.swift */; };
 		BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */; };
 		BA029B5B2C3E3951002ECCDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B5A2C3E3951002ECCDB /* ContentView.swift */; };
@@ -28,6 +29,7 @@
 		0D8729192C3E45C40077C46C /* CoreLocationComponent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoreLocationComponent.entitlements; sourceTree = "<group>"; };
 		0D87291A2C3FB6020077C46C /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		631D4EDD2C40E335004C4FC9 /* Desc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desc.swift; sourceTree = "<group>"; };
 		637113BE2C4009F5002D4C10 /* OptimalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimalTime.swift; sourceTree = "<group>"; };
 		BA029B552C3E3951002ECCDB /* CoreLocationComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreLocationComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationComponentApp.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */,
 				BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */,
 				637113BE2C4009F5002D4C10 /* OptimalTime.swift */,
+				631D4EDD2C40E335004C4FC9 /* Desc.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */,
 				BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */,
 				0D8729152C3E43A60077C46C /* WeatherManager.swift in Sources */,
+				631D4EDE2C40E335004C4FC9 /* Desc.swift in Sources */,
 				BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */,
 				0D87291B2C3FB6020077C46C /* Time.swift in Sources */,
 				637113BF2C4009F5002D4C10 /* OptimalTime.swift in Sources */,

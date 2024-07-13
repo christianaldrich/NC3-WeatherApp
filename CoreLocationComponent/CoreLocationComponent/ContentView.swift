@@ -41,9 +41,41 @@ struct ContentView: View {
                     GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                     
                     
-                    OptimalTime(timeList: weatherKitManager.safeWeather)
+//                    OptimalTime(timeList: weatherKitManager.safeWeather)
+                    
+                    Desc(timeList: weatherKitManager.safeWeather)
                 }
                 
+                
+                
+                
+                
+                GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
+                
+                
+                
+                
+                
+//                Desc()
+                
+//                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
+                
+//                Text("\(locationManager.cityName)")
+                
+//                Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
+//                if let currentWeather = weatherKitManager.currentWeather {
+//                    Text("Current Time: \(currentWeather.date.formatted())")
+//                    Text("Current Weather: \(currentWeather.condition)")
+//                }else {
+//                    Text("Loading...")
+//                }
+//                ScrollView{
+//                    ForEach(weatherKitManager.hourWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
+//                        // Customize the view for each hourly weather data
+//                        Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition)")
+//                    }
+//                    Text("\(weatherKitManager.hourWeather.count)")
+//                }
             }
             .padding()
             .task {
