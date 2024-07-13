@@ -11,6 +11,8 @@ struct ContentView: View {
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
     
+    
+    
     private var symbolCondition = ""
     
     
@@ -40,7 +42,7 @@ struct ContentView: View {
                          
                     GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                     
-                    
+
                     OptimalTime(timeList: weatherKitManager.safeWeather)
                 }
                 
@@ -53,16 +55,22 @@ struct ContentView: View {
                             guard let newLocation = newLocation else { return }
                             Task {
                                 await weatherKitManager.getWeather(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+                                print("Safe Weather (onChange): \(weatherKitManager.safeWeather)")  // Tambahkan di sini
+
                             }
                         }
             .onAppear{
                 Task{
                     await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                    print("Safe Weather (onAppear): \(weatherKitManager.safeWeather)")  // Tambahkan di sini
+
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                 Task{
                     await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                    print("Safe Weather (onReceive): \(weatherKitManager.safeWeather)")  // Tambahkan di sini
+
                 }
             }
         } else {

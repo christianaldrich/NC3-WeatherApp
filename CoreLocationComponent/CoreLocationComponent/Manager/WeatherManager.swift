@@ -7,9 +7,15 @@
 
 import Foundation
 import WeatherKit
+import SwiftUI
 
 @MainActor class WeatherManager:ObservableObject {
     @Published var weather: Weather?
+    
+    // Widget Purpose //
+    @AppStorage("safeWeatherData") var safeWeatherData = " "
+    
+   
     
     func getWeather(latitude: Double, longitude: Double) {
         async {
@@ -91,6 +97,7 @@ import WeatherKit
         if startDate != Date.distantPast {
             timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
         }
+        
         return timeRange
     }
     

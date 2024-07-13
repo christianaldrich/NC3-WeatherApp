@@ -19,32 +19,35 @@ struct OptimalTime: View {
     
     let timeList : [TimeRange]
     
+    
+    
     var body: some View {
         VStack {
             Text("Optimal delivery times:")
-                .font(.system(size: 17, weight: .regular, design: .default))
-                .padding(.bottom, -10)
-            
+//                .font(.system(size: 17, weight: .regular, design: .default))
+//                .padding(.bottom, -10)
+                        
             VStack (spacing: 10) {
+                
                 ForEach(timeList, id: \.id) { timeListItem in
                     ZStack{
                         
                         HStack {
                             Text("\(timeFormatter.string(from: timeListItem.startTime))")
-                                .font(.system(size: 34, weight: .bold, design: .default))
+//                                .font(.system(size: 34, weight: .bold, design: .default))
                             
                             
                             Text("to \(timeFormatter.string(from: timeListItem.endTime))")
-                                .font(.system(size: 34, weight: .bold, design: .default))
+//                                .font(.system(size: 34, weight: .bold, design: .default))
                             
                         }
                         .zIndex(1)
                         
                         
-                        Rectangle()
-                            .frame(width: 242, height: 77)
-                            .cornerRadius(10)
-                            .foregroundColor(.blue)
+//                        Rectangle()
+//                            .frame(width: 242, height: 77)
+//                            .cornerRadius(10)
+//                            .foregroundColor(.blue)
                         
                     }
                 }
@@ -52,6 +55,7 @@ struct OptimalTime: View {
             .padding()
         }
     }
+        
 }
 
 #Preview {

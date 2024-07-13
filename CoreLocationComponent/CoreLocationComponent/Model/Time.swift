@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct TimeRange: Identifiable, Hashable {
+struct TimeRange: Codable, Identifiable, Hashable {
     let id = UUID()
     var startTime: Date
     var endTime: Date
