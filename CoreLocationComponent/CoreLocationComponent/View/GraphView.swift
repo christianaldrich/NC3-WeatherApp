@@ -35,7 +35,7 @@ struct GraphView: View {
                     ForEach(hourWeatherList, id: \.date){ hourWeatherItem in
                         VStack(spacing: 20){
                             Text(timeFormatter.string(from: hourWeatherItem.date))
-                            Image(systemName: "\(hourWeatherItem.symbolName).fill")
+                            Image(systemName: "\(hourWeatherItem.symbolName)")
                                 .foregroundStyle(.black)
                             
                             //gnti sesuai indeks
