@@ -46,30 +46,38 @@ struct SimpleEntry: TimelineEntry {
 struct WidgetAppEntryView : View {
     var entry: Provider.Entry
     let data = DataService()
-//    @ObservedObject var weatherKitManager = WeatherManager()
+    @ObservedObject var weatherKitManager = WeatherManager()
+    
     @Environment(\.widgetFamily) var widgetFamily
 
     var body: some View {
         
         switch widgetFamily{
         case .systemSmall:
-            VStack (alignment: .leading){
-                Text("Optimal \nDelivery Time")
-                    .fontWeight(.regular)
-                    .font(.system(size: 17))
-                Spacer()
-                Text("7pm")
-                    .fontWeight(.bold)
-                    .font(.system(size: 28))
-                Text("until 12pm")
-                    .fontWeight(.bold)
-                    .font(.system(size: 17))
+            OptimalTime(timeList: weatherKitManager.safeWeather) //entah kenapa ga mauu gara gara ga ada datanya yang masuk ? perlu di handle ??? AAAAA KESALLL WKWKWKW
+            
+//            VStack (alignment: .leading){
+//                Text("Optimal \nDelivery Time")
+//                    .fontWeight(.regular)
+//                    .font(.system(size: 17))
+//                Spacer()
+//                HStack{
+//                    Text("7pmx")
+//                        .fontWeight(.bold)
+//                        .font(.system(size: 28))
+//                    VStack{
+//                        Image(systemName: "chevron.down").foregroundStyle(.green).opacity(0.5)
+//                        Image(systemName: "chevron.down").foregroundStyle(.green)
+//                    }
+//                }
+//                Text("until 12pm")
+//                    .fontWeight(.bold)
+//                    .font(.system(size: 17))
                 
 //                Text(entry.date, style: .time)
+               
                 
-    //            OptimalTime(timeList: weatherKitManager.safeWeather) //entah kenapa ga mauu gara gara ga ada datanya yang masuk ? perlu di handle ??? AAAAA KESALLL WKWKWKW
-                
-            }
+//            }
             
         default:
             VStack{

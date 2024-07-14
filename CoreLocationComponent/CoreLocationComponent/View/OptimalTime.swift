@@ -27,7 +27,7 @@ struct OptimalTime: View {
 //                .font(.system(size: 17, weight: .regular, design: .default))
 //                .padding(.bottom, -10)
                         
-            VStack (spacing: 10) {
+            VStack () {
                 
                 ForEach(timeList, id: \.id) { timeListItem in
                     ZStack{
