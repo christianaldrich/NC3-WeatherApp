@@ -43,6 +43,9 @@ struct GraphView: View {
 //                            Text(hourWeatherItem.temperature.formatted())
 //                                .fontWeight(.medium)
                         }
+                        .background{
+                            safeWeatherBackground(for: hourWeatherItem.date)
+                        }
                         
                     }
                 }
@@ -57,6 +60,16 @@ struct GraphView: View {
         
         
     }
+    
+    private func safeWeatherBackground(for date: Date) -> some View {
+            if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
+                return Color.blue.opacity(0.65) // Adjust the opacity as needed
+            } else {
+                return Color.clear
+            }
+        }
+    
+    
 }
 
 //#Preview {
