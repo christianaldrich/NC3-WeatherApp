@@ -23,33 +23,87 @@ struct GraphView: View {
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
     
+//    private var textColors : Color = .black
+//    private var fillCheck : String = ""
+    
     let hourWeatherList : [HourWeather]
+    var date : Date
     
     var body: some View {
         
         VStack(alignment: .leading){
 //            Text("Hourly Forecast")
             
-            ScrollView(.horizontal){
-                HStack(spacing:18){
-                    ForEach(hourWeatherList, id: \.date){ hourWeatherItem in
-                        VStack(spacing: 20){
-                            Text(timeFormatter.string(from: hourWeatherItem.date))
-                            Image(systemName: "\(hourWeatherItem.symbolName)")
-                                .foregroundStyle(.black)
-                            
-                            //gnti sesuai indeks
-                            
-//                            Text(hourWeatherItem.temperature.formatted())
-//                                .fontWeight(.medium)
+            
+            
+            
+            if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
+                
+                ZStack{
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundStyle(.blue)
+                        .frame(height: 104)
+                    
+                    ScrollView(.horizontal){
+                        HStack(spacing:18){
+                            ForEach(hourWeatherList, id: \.date){ hourWeatherItem in
+                                VStack(spacing: 20){
+                                    
+                                    let (textColor, fillCheck, symbolColor) = getTextColorAndFillCheck(for: hourWeatherItem.date)
+                                    
+                                    Text(timeFormatter.string(from: hourWeatherItem.date))
+                                        .foregroundStyle(textColor)
+                                    Image(systemName: "\(hourWeatherItem.symbolName)\(fillCheck)")
+                                        .foregroundStyle(symbolColor)
+                                    
+                                    //gnti sesuai indeks
+                                    
+        //                            Text(hourWeatherItem.temperature.formatted())
+        //                                .fontWeight(.medium)
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundStyle(Color.green)
+
+                                }
+                                
+                            }
                         }
-                        .background{
-                            safeWeatherBackground(for: hourWeatherItem.date)
-                        }
-                        
+                        .padding()
                     }
+                    .frame(height: 114)
+                    
                 }
+                
             }
+            else{
+                ScrollView(.horizontal){
+                    HStack(spacing:18){
+                        ForEach(hourWeatherList, id: \.date){ hourWeatherItem in
+                            VStack(spacing: 20){
+                                
+                                let (textColor, fillCheck, symbolColor) = getTextColorAndFillCheck(for: hourWeatherItem.date)
+                                
+                                Text(timeFormatter.string(from: hourWeatherItem.date))
+                                    .foregroundStyle(textColor)
+                                Image(systemName: "\(hourWeatherItem.symbolName)\(fillCheck)")
+                                    .foregroundStyle(symbolColor)
+                                
+                                //gnti sesuai indeks
+                                
+    //                            Text(hourWeatherItem.temperature.formatted())
+    //                                .fontWeight(.medium)
+
+                                    Image(systemName: "exclamationmark.circle.fill")
+                                        .foregroundStyle(Color.red)
+                                                    
+                            }
+                        }
+                    }
+                    .padding()
+                }
+                .frame(height: 114)
+            }
+            
+            
         }
         .padding()
         .background{
@@ -63,9 +117,17 @@ struct GraphView: View {
     
     private func safeWeatherBackground(for date: Date) -> some View {
             if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
-                return Color.blue.opacity(0.65) // Adjust the opacity as needed
+                return Color.blue.opacity(1) // Adjust the opacity as needed
             } else {
                 return Color.clear
+            }
+        }
+    
+    private func getTextColorAndFillCheck(for date: Date) -> (Color, String, Color) {
+            if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
+                return (.white, ".fill", .white)
+            } else {
+                return (.black, ".fill", .gray)
             }
         }
     

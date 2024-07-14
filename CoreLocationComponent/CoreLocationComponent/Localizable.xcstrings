@@ -53,6 +53,7 @@
       }
     },
     "in %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

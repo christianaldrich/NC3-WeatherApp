@@ -12,8 +12,15 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     
     private var symbolCondition = ""
-    private var symbolColor : Color = .orange
+//    private var symbolColor : Color = .orange
     
+    private var symbolColor: Color {
+        if let currentWeather = weatherKitManager.currentWeather, weatherKitManager.checkWeather(weather: currentWeather) {
+                return .orange
+            } else {
+                return .gray
+            }
+        }
     
     var body: some View {
         
@@ -28,21 +35,23 @@ struct ContentView: View {
                         if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
                         } else {
-                            HStack{
-                                Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 63, height: 61)
-                                    .foregroundStyle(symbolColor)
+                            
                                 
-                                VStack(alignment: .leading){
+                                
+                                VStack(alignment: .center){
+                                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 63, height: 61)
+                                        .foregroundStyle(symbolColor)
                                     Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
                                         .font(.title)
                                         .bold()
-                                    Text("in \(locationManager.cityName)")
+                                    Text("\(locationManager.cityName)")
                                 }
+                                .foregroundStyle(.black)
                                 
-                            }
+                            
                                  
         //                    GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
                             
@@ -50,6 +59,7 @@ struct ContentView: View {
         //                    OptimalTime(timeList: weatherKitManager.safeWeather)
                             
                             Desc(timeList: weatherKitManager.safeWeather)
+                                .foregroundStyle(.black)
                         }
                     }
                     
@@ -58,7 +68,7 @@ struct ContentView: View {
                     
                     
                     
-                    GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
+                    GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather, date: Date.now)
                     
                     
                     

@@ -99,6 +99,7 @@ import WeatherKit
     func checkWeather(weather: HourWeather) -> Bool {
         switch weather.condition{
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
+//        case .mostlyClear, .mostlyCloudy:
                 return false
             default:
                 return true
