@@ -18,6 +18,7 @@
 		BA029B5D2C3E3952002ECCDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
 		BA029B602C3E3952002ECCDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5F2C3E3952002ECCDB /* Preview Assets.xcassets */; };
 		BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B662C3E396D002ECCDB /* LocationManager.swift */; };
+		BA08B6B02C43AAA600FDC291 /* SafeWeatherBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08B6AF2C43AAA600FDC291 /* SafeWeatherBackground.swift */; };
 		BAE9DA2B2C3ECBEA00965DAA /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2A2C3ECBEA00965DAA /* HomePageView.swift */; };
 		BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */; };
 		BAE9DA2F2C3EE60800965DAA /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */; };
@@ -39,6 +40,7 @@
 		BA029B662C3E396D002ECCDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BA029B682C3E3998002ECCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA029B6A2C3E9C1E002ECCDB /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = System/Library/Frameworks/WeatherKit.framework; sourceTree = SDKROOT; };
+		BA08B6AF2C43AAA600FDC291 /* SafeWeatherBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWeatherBackground.swift; sourceTree = "<group>"; };
 		BAE9DA2A2C3ECBEA00965DAA /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlottingView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */,
 				637113BE2C4009F5002D4C10 /* OptimalTime.swift */,
 				631D4EDD2C40E335004C4FC9 /* Desc.swift */,
+				BA08B6AF2C43AAA600FDC291 /* SafeWeatherBackground.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA029B5B2C3E3951002ECCDB /* ContentView.swift in Sources */,
+				BA08B6B02C43AAA600FDC291 /* SafeWeatherBackground.swift in Sources */,
 				BAE9DA2F2C3EE60800965DAA /* PlottingView.swift in Sources */,
 				BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */,
 				BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */,
