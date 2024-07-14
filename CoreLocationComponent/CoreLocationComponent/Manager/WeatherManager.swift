@@ -91,12 +91,14 @@ import WeatherKit
         if startDate != Date.distantPast {
             timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
         }
+        
+        print(timeRange)
         return timeRange
     }
     
     func checkWeather(weather: HourWeather) -> Bool {
         switch weather.condition{
-            case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
+        case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
                 return false
             default:
                 return true
