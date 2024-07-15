@@ -7,8 +7,13 @@
 
 import Foundation
 import WeatherKit
+import SwiftUI
 
 @MainActor class WeatherManager:ObservableObject {
+    
+    
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) var safeWeatherData = " "
+    
     @Published var weather: Weather?
     
     func getWeather(latitude: Double, longitude: Double) {
@@ -17,6 +22,8 @@ import WeatherKit
                 weather = try await Task.detached(priority: .userInitiated) {
                     return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
                 }.value
+                safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+
             } catch {
                 fatalError("\(error)")
             }
@@ -71,6 +78,7 @@ import WeatherKit
         }
     
     var safeWeather: [TimeRange] {
+        let calendar = Calendar.current
         let todayWeather = self.allWeather
         var timeRange: [TimeRange] = []
         var startDate: Date = Date.distantPast
@@ -83,6 +91,8 @@ import WeatherKit
             } else if checkWeather(weather: weather) {
                 endDate = weather.date
             } else if startDate != Date.distantPast {
+                endDate = calendar.date(byAdding: .minute, value: 59, to: endDate ?? Date())!
+                endDate = calendar.date(byAdding: .second, value: 59, to: endDate ?? Date())!
                 timeRange.append(TimeRange(startTime: startDate, endTime: endDate))
                 startDate = Date.distantPast
                 endDate = Date.distantPast
@@ -97,6 +107,7 @@ import WeatherKit
     }
     
     func checkWeather(weather: HourWeather) -> Bool {
+        
         switch weather.condition{
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
 //        case .mostlyClear, .mostlyCloudy:
@@ -104,6 +115,8 @@ import WeatherKit
             default:
                 return true
         }
+        
+        
     }
     
     struct GroupedWeather: Identifiable {
