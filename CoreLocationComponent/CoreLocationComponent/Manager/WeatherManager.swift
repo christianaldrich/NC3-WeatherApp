@@ -13,9 +13,10 @@ import SwiftUI
     @Published var weather: Weather?
     
     // Widget Purpose //
-    @AppStorage("safeWeatherData") var safeWeatherData = " "
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) var safeWeatherData = " "
     
-   
+    
+    
     
     func getWeather(latitude: Double, longitude: Double) {
         async {
@@ -26,6 +27,7 @@ import SwiftUI
             } catch {
                 fatalError("\(error)")
             }
+            safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
         }
     }
     

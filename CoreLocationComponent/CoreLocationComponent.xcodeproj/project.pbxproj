@@ -63,6 +63,7 @@
 		0D87291A2C3FB6020077C46C /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		637113BE2C4009F5002D4C10 /* OptimalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimalTime.swift; sourceTree = "<group>"; };
+		AC4BA6312C44A52F009FF334 /* WidgetAppExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetAppExtension.entitlements; sourceTree = "<group>"; };
 		ACB0EBE52C426C13008B1710 /* WidgetAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB0EBE62C426C13008B1710 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		ACB0EBE82C426C13008B1710 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -137,6 +138,7 @@
 		BA029B4C2C3E3951002ECCDB = {
 			isa = PBXGroup;
 			children = (
+				AC4BA6312C44A52F009FF334 /* WidgetAppExtension.entitlements */,
 				BA029B572C3E3951002ECCDB /* CoreLocationComponent */,
 				ACB0EBEA2C426C13008B1710 /* WidgetApp */,
 				BA029B562C3E3951002ECCDB /* Products */,
@@ -344,10 +346,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApp;
@@ -373,10 +376,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApp;
@@ -527,7 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -563,7 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;

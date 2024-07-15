@@ -36,6 +36,7 @@ struct Provider: TimelineProvider {
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
+    
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -46,53 +47,86 @@ struct SimpleEntry: TimelineEntry {
 struct WidgetAppEntryView : View {
     var entry: Provider.Entry
     let data = DataService()
-    @ObservedObject var weatherKitManager = WeatherManager()
     
     @Environment(\.widgetFamily) var widgetFamily
 
     var body: some View {
         
+        let stringDate = self.entry.safeWeatherData
+        let formattedTextofTime = dateFormatter(stringDate: stringDate)
+        
         switch widgetFamily{
         case .systemSmall:
-            OptimalTime(timeList: weatherKitManager.safeWeather) //entah kenapa ga mauu gara gara ga ada datanya yang masuk ? perlu di handle ??? AAAAA KESALLL WKWKWKW
             
-//            VStack (alignment: .leading){
-//                Text("Optimal \nDelivery Time")
-//                    .fontWeight(.regular)
-//                    .font(.system(size: 17))
-//                Spacer()
-//                HStack{
-//                    Text("7pmx")
-//                        .fontWeight(.bold)
-//                        .font(.system(size: 28))
-//                    VStack{
-//                        Image(systemName: "chevron.down").foregroundStyle(.green).opacity(0.5)
-//                        Image(systemName: "chevron.down").foregroundStyle(.green)
-//                    }
-//                }
-//                Text("until 12pm")
-//                    .fontWeight(.bold)
-//                    .font(.system(size: 17))
+            VStack (alignment: .leading){
+                Text("Optimal \nDelivery Time")
+                    .fontWeight(.regular)
+                    .font(.system(size: 17))
+                Spacer()
+                HStack{
+                    Text(formattedTextofTime.0)
+                        .fontWeight(.bold)
+                        .font(.system(size: 28))
+                    VStack{
+                        Image(systemName: "chevron.down").foregroundStyle(.green).opacity(0.5)
+                        Image(systemName: "chevron.down").foregroundStyle(.green)
+                    }
+                }
+                Text("until \(formattedTextofTime.1)")
+                    .fontWeight(.bold)
+                    .font(.system(size: 17))
                 
-//                Text(entry.date, style: .time)
+//            Text("\(entry.safeWeatherData)")
                
                 
-//            }
+            }
             
         default:
             VStack{
                 Text("Optimal \nDelivery Time")
                     .fontWeight(.regular)
                     .font(.system(size: 11))
-                Text("7pm until 12pm")
+                Text("\(formattedTextofTime.0) until \(formattedTextofTime.1)")
                     .fontWeight(.semibold)
                     .font(.system(size: 17))
                 // plot goes here
+                
+                
             }
 
         }
         
     }
+    
+    func dateFormatter(stringDate: String) -> (String, String) {
+            let dateComponents = stringDate.components(separatedBy: " - ")
+            guard dateComponents.count == 2 else {
+                fatalError("Invalid date string format")
+            }
+
+            let startDateString = dateComponents[0]
+            let endDateString = dateComponents[1]
+
+            // Formatter untuk mengubah string menjadi Date
+            let inputFormatter = DateFormatter()
+            inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+
+            // Formatter untuk mengubah Date menjadi string dengan format jam dan am/pm
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "ha"
+
+            // Ubah string menjadi Date
+            guard let startDate = inputFormatter.date(from: startDateString),
+                  let endDate = inputFormatter.date(from: endDateString) else {
+                fatalError("Invalid date format")
+            }
+
+            // Ubah Date menjadi string dengan format jam dan am/pm
+            let startTimeString = outputFormatter.string(from: startDate)
+            let endTimeString = outputFormatter.string(from: endDate)
+            
+            return (startTimeString, endTimeString)
+        }
 }
 
 struct WidgetApp: Widget {
