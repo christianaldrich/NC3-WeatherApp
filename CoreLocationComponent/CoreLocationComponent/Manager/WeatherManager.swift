@@ -7,8 +7,13 @@
 
 import Foundation
 import WeatherKit
+import SwiftUI
 
 @MainActor class WeatherManager:ObservableObject {
+    
+    
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) var safeWeatherData = " "
+    
     @Published var weather: Weather?
     
     func getWeather(latitude: Double, longitude: Double) {
@@ -17,6 +22,8 @@ import WeatherKit
                 weather = try await Task.detached(priority: .userInitiated) {
                     return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
                 }.value
+                safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+
             } catch {
                 fatalError("\(error)")
             }
