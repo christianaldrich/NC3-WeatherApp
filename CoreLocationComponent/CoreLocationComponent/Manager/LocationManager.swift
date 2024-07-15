@@ -69,14 +69,14 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
                             if cityName != nil{
                                 DispatchQueue.main.async {
                                     self!.cityName = cityName!
-                                    print(cityName)
+//                                    print(cityName)
                                 }
                             }else if countryName != nil{
                                 self!.cityName = countryName!
-                                print(cityName)
+//                                print(cityName)
                             }else{
                                 self?.cityName = "Somewhere"
-                                print(cityName)
+//                                print(cityName)
                             }
                             
                             

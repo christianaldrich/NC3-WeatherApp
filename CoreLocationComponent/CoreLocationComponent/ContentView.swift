@@ -39,11 +39,21 @@ struct ContentView: View {
                                 
                                 
                                 VStack(alignment: .center){
-                                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 63, height: 61)
-                                        .foregroundStyle(symbolColor)
+                                    
+                                    if weatherKitManager.currentWeather?.symbolName == "wind"{
+                                        Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 63, height: 61)
+                                            .foregroundStyle(symbolColor)
+                                    }else {
+                                        Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 63, height: 61)
+                                            .foregroundStyle(symbolColor)
+                                    }
+                                    
                                     Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
                                         .font(.title)
                                         .bold()
