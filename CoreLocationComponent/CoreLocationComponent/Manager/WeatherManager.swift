@@ -102,6 +102,7 @@ import SwiftUI
             timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
         }
         
+//        print(timeRange)
         return timeRange
     }
     
@@ -117,5 +118,51 @@ import SwiftUI
         
         
     }
+    
+    struct GroupedWeather: Identifiable {
+        var id = UUID()
+        var type: WeatherType
+        var items: [HourWeather]
+    }
+
+    enum WeatherType {
+        case safe
+        case risky
+    }
+
+    
+    func groupWeatherData(_ weatherData: [HourWeather]) -> [GroupedWeather] {
+        var groupedWeather: [GroupedWeather] = []
+        
+        var currentType: WeatherType?
+        var currentItems: [HourWeather] = []
+        
+        for weatherItem in weatherData {
+            let isSafe = safeWeather.contains { $0.startTime <= weatherItem.date && $0.endTime >= weatherItem.date }
+            let weatherType: WeatherType = isSafe ? .safe : .risky
+            
+            if currentType == nil {
+                currentType = weatherType
+            }
+            
+            if currentType == weatherType {
+                currentItems.append(weatherItem)
+            } else {
+                groupedWeather.append(GroupedWeather(type: currentType!, items: currentItems))
+                currentType = weatherType
+                currentItems = [weatherItem]
+            }
+        }
+        
+        if let currentType = currentType {
+            groupedWeather.append(GroupedWeather(type: currentType, items: currentItems))
+        }
+        
+        print("Grouped Weather: \(groupedWeather)")
+        
+        return groupedWeather
+    }
+
+    
 }
 
