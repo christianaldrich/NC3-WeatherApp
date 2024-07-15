@@ -158,7 +158,7 @@ import SwiftUI
             groupedWeather.append(GroupedWeather(type: currentType, items: currentItems))
         }
         
-        print("Grouped Weather: \(groupedWeather)")
+//        print("Grouped Weather: \(groupedWeather)")
         
         return groupedWeather
     }

@@ -35,6 +35,7 @@ struct Desc: View {
             
         }
         .onChange(of: timeList, perform: { _ in
+            
             updateDescription()
         })
     }
@@ -50,7 +51,9 @@ struct Desc: View {
         
         if !timeList.isEmpty{
             let timeRange = timeList[0]
+            
             let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
+            
             
             print("Time range start: \(timeRange.startTime), end: \(timeRange.endTime)")
             
@@ -59,13 +62,13 @@ struct Desc: View {
                 desc = LocalizedStringKey("You can get optimal delivery time now")
                 timeDesc = LocalizedStringKey("until \(timeFormatter.string(from: adjustedEndTime))")
                 
-            } else if currentTime <= timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
+            } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
                 desc = LocalizedStringKey("Delivery fee maybe increased")
                 timeDesc = LocalizedStringKey("optimal delivery fee start from tomorrow")
                 
-            } else if currentTime <= timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
+            } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
                 desc = LocalizedStringKey("Delivery fee maybe increased")
-                timeDesc = LocalizedStringKey("optimal delivery fee start from \(timeFormatter.string(from: adjustedEndTime))")
+                timeDesc = LocalizedStringKey("optimal delivery fee start from \(timeFormatter.string(from: timeRange.startTime))")
                 
             }
             else {
