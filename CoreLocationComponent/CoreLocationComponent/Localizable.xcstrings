@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
       "localizations" : {
         "id" : {
@@ -21,13 +24,12 @@
         }
       }
     },
-    "Error" : {
-      "extractionState" : "stale",
+    "Delivery fee maybe increased" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eror"
+            "value" : "Biaya pengantaran kemungkinan naik"
           }
         }
       }
@@ -52,13 +54,22 @@
         }
       }
     },
-    "in %@" : {
-      "extractionState" : "stale",
+    "optimal delivery fee start from %@" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "di %@"
+            "value" : "Biaya pengantaran optimal dimulai pukul %@"
+          }
+        }
+      }
+    },
+    "optimal delivery fee start from tomorrow" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biaya pengantaran optimal dimulai besok"
           }
         }
       }
@@ -74,10 +85,24 @@
       }
     },
     "or %@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "atau %@"
+          }
+        }
+      }
     },
     "Perimission not granted" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izin tidak diberikan"
+          }
+        }
+      }
     },
     "to %@" : {
       "localizations" : {
@@ -85,6 +110,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "- %@"
+          }
+        }
+      }
+    },
+    "until %@" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sampai %@"
+          }
+        }
+      }
+    },
+    "We haven't found the optimal time yet" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waktu optimal belum ditemukan"
+          }
+        }
+      }
+    },
+    "You can get optimal delivery time now" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekarang adalah waktu yang optimal untuk pengantaran"
           }
         }
       }
