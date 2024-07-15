@@ -15,19 +15,20 @@ import SwiftUI
     // Widget Purpose //
     @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) var safeWeatherData = " "
     
-    
-    
-    
     func getWeather(latitude: Double, longitude: Double) {
         async {
             do {
                 weather = try await Task.detached(priority: .userInitiated) {
                     return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
                 }.value
+                safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+                print("safeWeather Data: \(safeWeatherData)")
+                print("safeWeather: \(safeWeather)")
+
             } catch {
                 fatalError("\(error)")
             }
-            safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+//            safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
         }
     }
     

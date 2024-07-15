@@ -40,6 +40,7 @@ struct OptimalTime: View {
                             Text("to \(timeFormatter.string(from: timeListItem.endTime))")
 //                                .font(.system(size: 34, weight: .bold, design: .default))
                             
+                            
                         }
                         .zIndex(1)
                         
@@ -53,6 +54,8 @@ struct OptimalTime: View {
                 }
             }
             .padding()
+        }.onAppear{
+            print("Time List on OptimalTime\(timeList)")
         }
     }
         
@@ -61,7 +64,8 @@ struct OptimalTime: View {
 #Preview {
     let sampleTimes = [
         TimeRange(startTime: Date(), endTime: Calendar.current.date(byAdding: .hour, value: 1, to: Date())!),
-        TimeRange(startTime: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!, endTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!)
+        TimeRange(startTime: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!, endTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!),
+        TimeRange(startTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!, endTime: Calendar.current.date(byAdding: .hour, value: 4, to: Date())!)
     ]
     return OptimalTime(timeList: sampleTimes)
 }

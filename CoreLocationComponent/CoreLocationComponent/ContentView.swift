@@ -44,6 +44,7 @@ struct ContentView: View {
                     
 
                     OptimalTime(timeList: weatherKitManager.safeWeather)
+                    
                 }
                 
             }
@@ -69,7 +70,7 @@ struct ContentView: View {
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                 Task{
                     await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
-                    print("Safe Weather (onReceive): \(weatherKitManager.safeWeather)")  // Tambahkan di sini
+                    print("Safe Weather (onReceive): \(weatherKitManager.safeWeather)")
 
                 }
             }

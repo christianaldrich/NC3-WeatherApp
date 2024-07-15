@@ -1,7 +1,7 @@
 //
 //  WidgetApp.swift
 //  WidgetApp
-//
+//  
 //  Created by Reynard Octavius Tan on 13/07/24.
 //
 
@@ -20,7 +20,7 @@ struct Provider: TimelineProvider {
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -32,8 +32,9 @@ struct Provider: TimelineProvider {
             let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData())
             entries.append(entry)
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        
+        let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
+        let timeline = Timeline(entries: entries, policy: .after(nextUpdateDate))
         completion(timeline)
     }
     
@@ -75,21 +76,18 @@ struct WidgetAppEntryView : View {
                 Text("until \(formattedTextofTime.1)")
                     .fontWeight(.bold)
                     .font(.system(size: 17))
-                
-//            Text("\(entry.safeWeatherData)")
-               
-                
             }
             
         default:
-            VStack{
-                Text("Optimal \nDelivery Time")
+            VStack(alignment: .trailing){
+                Text("Optimal Delivery Time")
                     .fontWeight(.regular)
                     .font(.system(size: 11))
                 Text("\(formattedTextofTime.0) until \(formattedTextofTime.1)")
                     .fontWeight(.semibold)
                     .font(.system(size: 17))
                 // plot goes here
+                Spacer()
                 
                 
             }
@@ -150,9 +148,10 @@ struct WidgetApp: Widget {
     }
 }
 
-#Preview(as: .systemSmall) {
+#Preview(as: .systemMedium) {
     WidgetApp()
 } timeline: {
-    SimpleEntry(date: .now, safeWeatherData: "7pm")
-    SimpleEntry(date: .now, safeWeatherData: "8pm")
+    SimpleEntry(date: .now, safeWeatherData: "2024-07-15 08:00:00 +0000 - 2024-07-16 12:00:00 +0000")
+    SimpleEntry(date: .now, safeWeatherData: "2024-07-15 01:00:00 +0000 - 2024-07-16 17:00:00 +0000")
 }
+
