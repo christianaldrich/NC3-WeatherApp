@@ -71,6 +71,7 @@ import WeatherKit
         }
     
     var safeWeather: [TimeRange] {
+        let calendar = Calendar.current
         let todayWeather = self.allWeather
         var timeRange: [TimeRange] = []
         var startDate: Date = Date.distantPast
@@ -83,6 +84,8 @@ import WeatherKit
             } else if checkWeather(weather: weather) {
                 endDate = weather.date
             } else if startDate != Date.distantPast {
+                endDate = calendar.date(byAdding: .minute, value: 59, to: endDate ?? Date())!
+                endDate = calendar.date(byAdding: .second, value: 59, to: endDate ?? Date())!
                 timeRange.append(TimeRange(startTime: startDate, endTime: endDate))
                 startDate = Date.distantPast
                 endDate = Date.distantPast
@@ -92,11 +95,11 @@ import WeatherKit
             timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
         }
         
-        print(timeRange)
         return timeRange
     }
     
     func checkWeather(weather: HourWeather) -> Bool {
+        
         switch weather.condition{
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
 //        case .mostlyClear, .mostlyCloudy:
@@ -104,6 +107,8 @@ import WeatherKit
             default:
                 return true
         }
+        
+        
     }
 }
 
