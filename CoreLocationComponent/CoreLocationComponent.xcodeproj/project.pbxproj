@@ -16,6 +16,7 @@
 		0D89B96E2C4675C200DED358 /* DescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B96D2C4675C200DED358 /* DescriptionModel.swift */; };
 		0D89B9712C46A55D00DED358 /* GroupWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9702C46A55D00DED358 /* GroupWeatherView.swift */; };
 		0D89B9762C46AAD700DED358 /* PackageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9752C46AAD700DED358 /* PackageConstant.swift */; };
+		0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9752C46AAD700DED358 /* PackageConstant.swift */; };
 		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */; };
 		63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7A73F2C44C65200BB9808 /* LottieView.swift */; };
@@ -377,6 +378,7 @@
 			files = (
 				AC4BA6402C4500B1009FF334 /* WidgetAppsBundle.swift in Sources */,
 				AC4BA6422C4500B1009FF334 /* WidgetApp.swift in Sources */,
+				0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */,
 				AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
