@@ -29,10 +29,20 @@ struct GraphView: View {
     @ObservedObject var viewModel: HomeViewModel
     var groupedWeather: [GroupedWeather]
     
+    @Binding var descriptionModel: DescriptionModel
+    
     var body: some View {
         VStack(alignment: .leading){
-                ZStack{
-                    ScrollView(.horizontal){
+            
+            Text(descriptionModel.timeDescription)
+                .font(.body)
+                .fontWeight(.regular)
+                .foregroundStyle(Color("descText"))
+            
+            Divider()
+                .foregroundStyle(Color(.systemGray3))
+            ZStack{
+                ScrollView(.horizontal){
                         HStack(spacing:18){
                             
                             ForEach(groupedWeather) { group in
@@ -48,7 +58,7 @@ struct GraphView: View {
                                     }else{
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 0)
-                                                .foregroundStyle(Color.white.opacity(0.5))
+                                                .foregroundStyle(Color("graphViewColor").opacity(0.5))
                                                 .frame(height: 104)
                                             GroupWeatherView(viewModel: viewModel, weathers: group.items)
                                         }
@@ -56,14 +66,14 @@ struct GraphView: View {
                                 
                             }
                         }
-                    }
-                    .frame(height: 114)
-                    
                 }
+                .frame(height: 114)
+                
+            }
         }
         .padding()
         .background{
-            Color.white
+            Color("graphViewColor")
         }
         .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
         .foregroundStyle(.black)
