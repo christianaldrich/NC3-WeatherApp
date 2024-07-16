@@ -12,7 +12,7 @@ import SwiftUI
 @MainActor class WeatherManager:ObservableObject {
     
     
-    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) var safeWeatherData = " "
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.pang.CoreLocationComponent")) var safeWeatherData = " "
     
     @Published var weather: Weather?
     
@@ -99,7 +99,10 @@ import SwiftUI
             }
         }
         if startDate != Date.distantPast {
-            timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
+            let adjustedEndDate = todayWeather.last?.date ?? Date()
+               let lastMomentOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: adjustedEndDate) ?? Date()
+               timeRange.append(TimeRange(startTime: startDate, endTime: lastMomentOfDay))
+//            timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
         }
         
 //        print(timeRange)
@@ -158,7 +161,7 @@ import SwiftUI
             groupedWeather.append(GroupedWeather(type: currentType, items: currentItems))
         }
         
-        print("Grouped Weather: \(groupedWeather)")
+//        print("Grouped Weather: \(groupedWeather)")
         
         return groupedWeather
     }
