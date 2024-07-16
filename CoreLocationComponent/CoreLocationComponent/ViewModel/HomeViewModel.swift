@@ -96,4 +96,41 @@ class HomeViewModel: ObservableObject {
         self.description = DescriptionModel(conclusionDescription: desc, timeDescription: timeDesc)
         print("update Description: \(description.conclusionDescription)")
     }
+    
+    func groupWeatherData(_ weatherData: [GraphModel], safeWeather: [TimeRange]) -> [GroupedWeather] {
+        var groupedWeather: [GroupedWeather] = []
+        
+        var currentType: WeatherType?
+        var currentItems: [GraphModel] = []
+        
+        for weatherItem in weatherData {
+            let isSafe = safeWeather.contains { $0.startTime <= weatherItem.value.date && $0.endTime >= weatherItem.value.date }
+            let weatherType: WeatherType = isSafe ? .safe : .risky
+            
+            if currentType == nil {
+                currentType = weatherType
+            }
+            
+            if currentType == weatherType {
+                currentItems.append(weatherItem)
+            } else {
+                groupedWeather.append(GroupedWeather(type: currentType!, items: currentItems))
+                currentType = weatherType
+                currentItems = [weatherItem]
+            }
+        }
+        
+        if let currentType = currentType {
+            groupedWeather.append(GroupedWeather(type: currentType, items: currentItems))
+        }
+        return groupedWeather
+    }
+    
+    func checkWeatherSymbol(symbolName: String) -> Bool {
+        if symbolName == "wind" || symbolName == "snowflake" || symbolName == "tornado" || symbolName == "hurricane" {
+            return false
+        } else {
+            return true
+        }
+    }
 }

@@ -6,21 +6,15 @@
 //
 
 import SwiftUI
+import WeatherKit
 
-struct ContentView: View {
+struct HomeView: View {
     
     @EnvironmentObject var weatherKitManager: WeatherManager
     @EnvironmentObject var locationManager: LocationManager
     @ObservedObject var viewModel: HomeViewModel
     @State var descr: DescriptionModel = DescriptionModel(conclusionDescription: "Undefined", timeDescription: "Undefined")
     
-    private var symbolColor: Color {
-        if let currentWeather = weatherKitManager.currentWeather, weatherKitManager.checkWeather(weather: currentWeather) {
-                return .orange
-            } else {
-                return .gray
-            }
-        }
     
     var body: some View {
         
@@ -36,11 +30,11 @@ struct ContentView: View {
                             ProgressView()
                         } else {
                             HStack(alignment: .top) {
-                                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
+                                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(viewModel.checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 63, height: 61)
-                                            .foregroundStyle(symbolColor)
+                                            .foregroundStyle(weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) ? .orange : .gray)
                                     VStack(alignment: .leading){
                                         Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
                                             .font(.title)
@@ -50,45 +44,43 @@ struct ContentView: View {
                                 }
                                 .foregroundStyle(.black)
 
-                            Desc(descriptionModel: $descr)
+                            DescriptionView(descriptionModel: $descr)
                                 .foregroundStyle(.black)
-                                .onAppear{
-                                    print("appear update: \(weatherKitManager.safeWeather) : \(descr)")
+                                .onAppear {
                                     viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
                                     descr = viewModel.description
                                 }
-                                .onChange(of: weatherKitManager.safeWeather, perform: { _ in
+                                .onChange(of: weatherKitManager.safeWeather) {
                                     viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
                                     descr = viewModel.description
-                                    print("updating to:  \(weatherKitManager.safeWeather) : \(descr)")
-                                })
+                                }
                         }
                     }
                     
                     Spacer()
                     
-                    GraphView(hourModelList: viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), date: Date())
+                    GraphView(viewModel: viewModel,
+                              groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather))
                     
                 }
                 .padding()
                 .task {
-                    await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                    weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
                 }
                 .onChange(of: locationManager.currentLocation) { newLocation in
                                 guard let newLocation = newLocation else { return }
                                 Task {
-                                    await weatherKitManager.getWeather(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+                                    weatherKitManager.getWeather(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
                                 }
                             }
                 .onAppear{
                     Task{
-                        print("ON Apppear \(viewModel.description.conclusionDescription)")
-                        await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                        weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
                     }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     Task{
-                        await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
+                        weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
                     }
                 }
             } else {
@@ -98,15 +90,3 @@ struct ContentView: View {
         .ignoresSafeArea()
     }
 }
-
-func checkWeatherSymbol(symbolName: String) -> Bool {
-    if symbolName == "wind" || symbolName == "snowflake" || symbolName == "tornado" || symbolName == "hurricane" {
-        return false
-    } else {
-        return true
-    }
-}
-
-//#Preview {
-//    ContentView()
-//}

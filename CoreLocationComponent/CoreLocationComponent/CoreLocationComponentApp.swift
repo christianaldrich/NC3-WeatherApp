@@ -15,7 +15,7 @@ struct CoreLocationComponentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: viewModel)
+            HomeView(viewModel: viewModel)
                 .environmentObject(weatherKitManager)
                 .environmentObject(locationManager)
         }

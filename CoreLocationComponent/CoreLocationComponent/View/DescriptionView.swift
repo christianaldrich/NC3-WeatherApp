@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct Desc: View {
+struct DescriptionView: View {
     
     @Binding var descriptionModel: DescriptionModel
     

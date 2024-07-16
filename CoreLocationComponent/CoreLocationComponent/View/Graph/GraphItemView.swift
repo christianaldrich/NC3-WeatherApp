@@ -9,28 +9,15 @@ import SwiftUI
 
 struct GraphItemView: View {
     
+    @ObservedObject var viewModel: HomeViewModel
     var item: GraphModel
-    var timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        
-        if is24HourFormat(){
-            //24-hour
-            formatter.dateFormat = "HH"
-            
-        }else{
-            //12-hour
-            formatter.dateFormat = "ha"
-        }
-        
-        return formatter
-    }()
     
     var body: some View {
         VStack(spacing: 20) {
-            Text(timeFormatter.string(from: item.value.date))
+            Text(viewModel.timeFormatter.string(from: item.value.date))
                 .foregroundStyle(item.textColor)
             
-                Image(systemName: "\(item.value.symbolName)\(item.graphWeatherSymbol.weatherSymbolExtension)")
+            Image(systemName: "\(item.value.symbolName)\(item.graphWeatherSymbol.weatherSymbolExtension)")
                     .foregroundStyle(item.graphWeatherSymbol.weatherSymbolColor)
             
             Image(systemName: "\(item.graphDescription.descriptionSymbol).circle\(item.graphDescription.descriptionSymbolExtension)")

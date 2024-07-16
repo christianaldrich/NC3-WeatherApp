@@ -23,31 +23,13 @@ func is24HourFormat() -> Bool {
 
 struct GraphView: View {
     
-    var timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        
-        if is24HourFormat(){
-            //24-hour
-            formatter.dateFormat = "HH"
-            
-        }else{
-            //12-hour
-            formatter.dateFormat = "ha"
-        }
-        
-        return formatter
-    }()
-    
     @EnvironmentObject var weatherKitManager: WeatherManager
     @EnvironmentObject var locationManager: LocationManager
     
-    let hourModelList : [GraphModel]
-    var date : Date
+    @ObservedObject var viewModel: HomeViewModel
+    var groupedWeather: [GroupedWeather]
     
     var body: some View {
-        
-        let groupedWeather = weatherKitManager.groupWeatherData(hourModelList)
-        
         VStack(alignment: .leading){
                 ZStack{
                     ScrollView(.horizontal){
@@ -59,9 +41,8 @@ struct GraphView: View {
                                             RoundedRectangle(cornerRadius: 5)
                                                 .foregroundStyle(Color.blue.opacity(1))
                                                 .frame(height: 104)
-                                            weatherItemsView(group.items)
+                                            GroupWeatherView(viewModel: viewModel, weathers: group.items)
                                                 .padding()
-                                            
                                         }
 
                                     }else{
@@ -69,9 +50,7 @@ struct GraphView: View {
                                             RoundedRectangle(cornerRadius: 0)
                                                 .foregroundStyle(Color.white.opacity(0.5))
                                                 .frame(height: 104)
-                                                                            
-                                            weatherItemsView(group.items)
-                                            
+                                            GroupWeatherView(viewModel: viewModel, weathers: group.items)
                                         }
                                     }
                                 
@@ -91,25 +70,4 @@ struct GraphView: View {
         
         
     }
-    
-    @ViewBuilder
-        private func weatherItemsView(_ items: [GraphModel]) -> some View {
-            HStack(spacing: 18) {
-                ForEach(items, id: \.id) { hourWeatherItem in
-                    VStack(spacing: 20) {
-                        
-                        Text(timeFormatter.string(from: hourWeatherItem.value.date))
-                            .foregroundStyle(hourWeatherItem.textColor)
-                        
-            
-                        Image(systemName: "\(hourWeatherItem.value.symbolName)\(checkWeatherSymbol(symbolName: hourWeatherItem.value.symbolName) ? hourWeatherItem.graphWeatherSymbol.weatherSymbolExtension : "")")
-                                .foregroundStyle(hourWeatherItem.graphWeatherSymbol.weatherSymbolColor)
-                        
-                        Image(systemName: "\(hourWeatherItem.graphDescription.descriptionSymbol).circle\(hourWeatherItem.graphDescription.descriptionSymbolExtension)")
-                            .foregroundStyle(hourWeatherItem.graphDescription.descriptionSymbolColor)
-                    }
-                    .padding(5)
-                }
-            }
-        }
 }

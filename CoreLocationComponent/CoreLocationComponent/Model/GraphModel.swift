@@ -82,3 +82,14 @@ enum GraphState {
     case unsafe
     case drizzle
 }
+
+struct GroupedWeather: Identifiable {
+    var id = UUID()
+    var type: WeatherType
+    var items: [GraphModel]
+}
+
+enum WeatherType {
+    case safe
+    case risky
+}
