@@ -11,8 +11,8 @@ struct ContentView: View {
     
     @EnvironmentObject var weatherKitManager: WeatherManager
     @EnvironmentObject var locationManager: LocationManager
+    @ObservedObject var viewModel = HomeViewModel()
     
-    private var symbolCondition = ""    
     private var symbolColor: Color {
         if let currentWeather = weatherKitManager.currentWeather, weatherKitManager.checkWeather(weather: currentWeather) {
                 return .orange
@@ -34,31 +34,22 @@ struct ContentView: View {
                         if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
                         } else {
-                                
-                                VStack(alignment: .center){
-                                    
-                                    if weatherKitManager.currentWeather?.symbolName == "wind"{
-                                        Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")")
+                            HStack(alignment: .top) {
+                                    Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 63, height: 61)
                                             .foregroundStyle(symbolColor)
-                                    }else {
-                                        Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets").fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 63, height: 61)
-                                            .foregroundStyle(symbolColor)
+                                    VStack(alignment: .leading){
+                                        Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
+                                            .font(.title)
+                                            .bold()
+                                        Text("\(locationManager.cityName)")
                                     }
-                                    
-                                    Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
-                                        .font(.title)
-                                        .bold()
-                                    Text("\(locationManager.cityName)")
                                 }
                                 .foregroundStyle(.black)
 
-                            Desc(timeList: weatherKitManager.safeWeather)
+                            Desc()
                                 .foregroundStyle(.black)
                         }
                     }
@@ -66,7 +57,7 @@ struct ContentView: View {
                     Spacer()
                     Spacer()
                     
-                    GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather, date: Date.now)
+                    GraphView(hourModelList: viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), date: Date())
                     
                 }
                 .padding()
@@ -97,6 +88,14 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+func checkWeatherSymbol(symbolName: String) -> Bool {
+    if symbolName == "wind" || symbolName == "snowflake" || symbolName == "tornado" || symbolName == "hurricane" {
+        return false
+    } else {
+        return true
+    }
 }
+
+//#Preview {
+//    ContentView()
+//}

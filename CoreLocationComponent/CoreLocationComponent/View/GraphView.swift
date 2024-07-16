@@ -38,15 +38,15 @@ struct GraphView: View {
         return formatter
     }()
     
-    @ObservedObject var weatherKitManager = WeatherManager()
-    @StateObject var locationManager = LocationManager()
+    @EnvironmentObject var weatherKitManager: WeatherManager
+    @EnvironmentObject var locationManager: LocationManager
     
-    let hourWeatherList : [HourWeather]
+    let hourModelList : [GraphModel]
     var date : Date
     
     var body: some View {
         
-        let groupedWeather = weatherKitManager.groupWeatherData(hourWeatherList)
+        let groupedWeather = weatherKitManager.groupWeatherData(hourModelList)
         
         VStack(alignment: .leading){
                 ZStack{
@@ -94,45 +94,22 @@ struct GraphView: View {
     }
     
     @ViewBuilder
-        private func weatherItemsView(_ items: [HourWeather]) -> some View {
+        private func weatherItemsView(_ items: [GraphModel]) -> some View {
             HStack(spacing: 18) {
-                ForEach(items, id: \.date) { hourWeatherItem in
+                ForEach(items, id: \.id) { hourWeatherItem in
                     VStack(spacing: 20) {
-                        let (textColor, fillCheck, symbolColor,littleSymbolDesc, littleSymbolColor, fillLittleSymbol) = getTextColorAndFillCheck(for: hourWeatherItem.date, item: hourWeatherItem)
                         
-                        Text(timeFormatter.string(from: hourWeatherItem.date))
-                            .foregroundStyle(textColor)
+                        Text(timeFormatter.string(from: hourWeatherItem.value.date))
+                            .foregroundStyle(hourWeatherItem.textColor)
                         
-                        if hourWeatherItem.symbolName == "wind" || hourWeatherItem.symbolName == "snowflake" || hourWeatherItem.symbolName == "tornado" || hourWeatherItem.symbolName == "hurricane"{
-                            Image(systemName: "wind")
-                                .foregroundStyle(symbolColor)
-                            
-                        }else {
-                            Image(systemName: "\(hourWeatherItem.symbolName)\(fillCheck)")
-                                .foregroundStyle(symbolColor)
-                        }
+            
+                        Image(systemName: "\(hourWeatherItem.value.symbolName)\(checkWeatherSymbol(symbolName: hourWeatherItem.value.symbolName) ? hourWeatherItem.graphWeatherSymbol.weatherSymbolExtension : "")")
+                                .foregroundStyle(hourWeatherItem.graphWeatherSymbol.weatherSymbolColor)
                         
-                        Image(systemName: "\(littleSymbolDesc).circle\(fillLittleSymbol)")
-                            .foregroundStyle(littleSymbolColor)
+                        Image(systemName: "\(hourWeatherItem.graphDescription.descriptionSymbol).circle\(hourWeatherItem.graphDescription.descriptionSymbolExtension)")
+                            .foregroundStyle(hourWeatherItem.graphDescription.descriptionSymbolColor)
                     }
                     .padding(5)
-                }
-            }
-        }
-    
-    private func getTextColorAndFillCheck(for date: Date, item: HourWeather) -> (Color, String, Color, String, Color, String) {
-        
-        //bisa input .circle kalo udh mentok
-        
-            if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
-                return (.white, ".fill", .white, "checkmark", .white, ".fill")
-            } else {
-                
-                if item.condition == .drizzle {
-                    return (.black, ".fill", .gray, "exclamationmark", .orange, "")
-                }
-                else {
-                    return (.black, ".fill", .gray,"exclamationmark", .red, "")
                 }
             }
         }

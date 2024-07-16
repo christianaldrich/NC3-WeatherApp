@@ -119,7 +119,7 @@ class WeatherManager: ObservableObject {
     struct GroupedWeather: Identifiable {
         var id = UUID()
         var type: WeatherType
-        var items: [HourWeather]
+        var items: [GraphModel]
     }
 
     enum WeatherType {
@@ -128,14 +128,14 @@ class WeatherManager: ObservableObject {
     }
 
     
-    func groupWeatherData(_ weatherData: [HourWeather]) -> [GroupedWeather] {
+    func groupWeatherData(_ weatherData: [GraphModel]) -> [GroupedWeather] {
         var groupedWeather: [GroupedWeather] = []
         
         var currentType: WeatherType?
-        var currentItems: [HourWeather] = []
+        var currentItems: [GraphModel] = []
         
         for weatherItem in weatherData {
-            let isSafe = safeWeather.contains { $0.startTime <= weatherItem.date && $0.endTime >= weatherItem.date }
+            let isSafe = safeWeather.contains { $0.startTime <= weatherItem.value.date && $0.endTime >= weatherItem.value.date }
             let weatherType: WeatherType = isSafe ? .safe : .risky
             
             if currentType == nil {

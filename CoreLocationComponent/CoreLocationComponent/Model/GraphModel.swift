@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 import WeatherKit
 
-struct GraphModel {
+struct GraphModel: Identifiable {
+    var id: UUID = UUID()
     var value: HourWeather
     var textColor: Color {
         switch self.weatherState{

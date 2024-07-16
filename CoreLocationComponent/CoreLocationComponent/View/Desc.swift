@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct Desc: View {
+    @EnvironmentObject var weatherKitManager: WeatherManager
+    @EnvironmentObject var locationManager: LocationManager
     
      var timeFormatter: DateFormatter = {
             let formatter = DateFormatter()
@@ -27,8 +29,9 @@ struct Desc: View {
         }()
     
     @State var desc: LocalizedStringKey = ""
-    let timeList : [TimeRange]
+    @State var timeList : [TimeRange] = []
     @State var timeDesc: LocalizedStringKey = ""
+    
     var body: some View {
         VStack(spacing: 10){
             Text(desc)
@@ -43,8 +46,10 @@ struct Desc: View {
             
             
         }
+        .onAppear{
+            timeList = weatherKitManager.safeWeather
+        }
         .onChange(of: timeList, perform: { _ in
-            
             updateDescription()
         })
     }
@@ -94,5 +99,5 @@ struct Desc: View {
         TimeRange(startTime: Date(), endTime: Calendar.current.date(byAdding: .hour, value: 1, to: Date())!),
         TimeRange(startTime: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!, endTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!)
     ]
-    return Desc(timeList: sampleTimes)
+    return Desc()
 }
