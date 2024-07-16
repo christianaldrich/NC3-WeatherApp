@@ -9,9 +9,10 @@ import Foundation
 import WeatherKit
 import SwiftUI
 
-@MainActor class WeatherManager:ObservableObject {
+@MainActor
+class WeatherManager: ObservableObject {
     
-    
+    static var shared = WeatherManager()
     @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.pang.CoreLocationComponent")) var safeWeatherData = " "
     
     @Published var weather: Weather?
@@ -34,10 +35,7 @@ import SwiftUI
             let currentDate = Date()
             let calendar = Calendar.current
             
-            // Start of today
             let startOfToday = calendar.startOfDay(for: currentDate)
-            
-            // End of next day
             let endOfNextDay = calendar.date(byAdding: .day, value: 1, to: startOfToday)!
             
             let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > currentDate && $0.date < endOfNextDay }
@@ -102,10 +100,7 @@ import SwiftUI
             let adjustedEndDate = todayWeather.last?.date ?? Date()
                let lastMomentOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: adjustedEndDate) ?? Date()
                timeRange.append(TimeRange(startTime: startDate, endTime: lastMomentOfDay))
-//            timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
         }
-        
-//        print(timeRange)
         return timeRange
     }
     
@@ -113,7 +108,6 @@ import SwiftUI
         
         switch weather.condition{
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
-//        case .mostlyClear, .mostlyCloudy:
                 return false
             default:
                 return true
@@ -160,9 +154,6 @@ import SwiftUI
         if let currentType = currentType {
             groupedWeather.append(GroupedWeather(type: currentType, items: currentItems))
         }
-        
-//        print("Grouped Weather: \(groupedWeather)")
-        
         return groupedWeather
     }
 

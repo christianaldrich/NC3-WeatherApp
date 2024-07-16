@@ -12,10 +12,7 @@ struct Desc: View {
     
      var timeFormatter: DateFormatter = {
             let formatter = DateFormatter()
-    //        formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
-    //        formatter.pmSymbol = "pm"
-    //        formatter.amSymbol = "am"
-            
+
             if is24HourFormat(){
                 //24-hour
                 formatter.dateFormat = "HH"
@@ -32,15 +29,6 @@ struct Desc: View {
     @State var desc: LocalizedStringKey = ""
     let timeList : [TimeRange]
     @State var timeDesc: LocalizedStringKey = ""
-    
-//    private let timeFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "h:mm a" // "h a" will format the time as "1 PM", "2 AM", etc.
-//        formatter.pmSymbol = "pm"
-//        formatter.amSymbol = "am"
-//        return formatter
-//    }()
-//    
     var body: some View {
         VStack(spacing: 10){
             Text(desc)
@@ -68,21 +56,12 @@ struct Desc: View {
         let startOfTomorrow = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: currentTime)!)
         let startOfToday = calendar.startOfDay(for: currentTime)
         let startOf2Day = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 2, to: currentTime)!)
-        
-//        print("Current time: \(currentTime)")
-        
+
         if !timeList.isEmpty{
             let timeRange = timeList[0]
             
             let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
-            
-            
-//            print("Time range start: \(timeRange.startTime), end: \(timeRange.endTime)")
-//            print(startOfToday)
-//            print(startOfTomorrow)
-            
-            
-            
+
             if adjustedEndTime >= calendar.startOfDay(for: startOf2Day) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
                 desc = LocalizedStringKey("Place order anytime you want")
                 timeDesc = LocalizedStringKey("No increasing delivery fee for today")

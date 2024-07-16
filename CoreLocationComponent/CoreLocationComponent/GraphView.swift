@@ -27,9 +27,6 @@ struct GraphView: View {
     
     var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-//        formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
-//        formatter.pmSymbol = "pm"
-//        formatter.amSymbol = "am"
         
         if is24HourFormat(){
             //24-hour
@@ -46,9 +43,6 @@ struct GraphView: View {
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
     
-//    private var textColors : Color = .black
-//    private var fillCheck : String = ""
-    
     let hourWeatherList : [HourWeather]
     var date : Date
     
@@ -57,18 +51,7 @@ struct GraphView: View {
         let groupedWeather = weatherKitManager.groupWeatherData(hourWeatherList)
         
         VStack(alignment: .leading){
-//            Text("Hourly Forecast")
-            
-            
-            
-            
-//            if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
-                
                 ZStack{
-//                    RoundedRectangle(cornerRadius: 5)
-//                        .foregroundStyle(.blue)
-//                        .frame(height: 104)
-                    
                     ScrollView(.horizontal){
                         HStack(spacing:18){
                             
@@ -78,9 +61,6 @@ struct GraphView: View {
                                             RoundedRectangle(cornerRadius: 5)
                                                 .foregroundStyle(Color.blue.opacity(1))
                                                 .frame(height: 104)
-                                            
-//                                            Ellipse().fill(Color.red).frame(width: 50)
-                                                                            
                                             weatherItemsView(group.items)
                                                 .padding()
                                             
@@ -98,42 +78,11 @@ struct GraphView: View {
                                     }
                                 
                             }
-//                            ForEach(hourWeatherList, id: \.date){ hourWeatherItem in
-//                                VStack(spacing: 20){
-//                                    
-//                                    let (textColor, fillCheck, symbolColor) = getTextColorAndFillCheck(for: hourWeatherItem.date)
-//                                    
-//                                    Text(timeFormatter.string(from: hourWeatherItem.date))
-//                                        .foregroundStyle(textColor)
-//                                    Image(systemName: "\(hourWeatherItem.symbolName)\(fillCheck)")
-////                                        .resizable()
-////                                        .aspectRatio(contentMode: .fit)
-////                                        .frame(width: 227)
-//                                        .foregroundStyle(symbolColor)
-//                                        
-//                                    
-//                                    //gnti sesuai indeks
-//                                    
-//        //                            Text(hourWeatherItem.temperature.formatted())
-//        //                                .fontWeight(.medium)
-//                                    Image(systemName: "checkmark.circle.fill")
-//                                            .foregroundStyle(Color.green)
-////                                    Image(systemName: "exclamationmark.circle.fill")
-////                                            .foregroundStyle(Color.red)
-//
-//                                }
-//                                
-//                            }
                         }
-//                        .padding()
                     }
-//                    .padding()
                     .frame(height: 114)
                     
                 }
-                
-//            }
-            
             
         }
         .padding()
@@ -187,15 +136,6 @@ struct GraphView: View {
                 else {
                     return (.black, ".fill", .gray,"exclamationmark", .red, "")
                 }
-                
             }
-        
-        
         }
-    
-    
 }
-
-//#Preview {
-//    GraphView(hourweatherList: weatherKitManager)
-//}

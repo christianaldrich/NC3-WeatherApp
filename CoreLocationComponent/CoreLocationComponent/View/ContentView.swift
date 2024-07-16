@@ -12,9 +12,7 @@ struct ContentView: View {
     @ObservedObject var weatherKitManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
     
-    private var symbolCondition = ""
-//    private var symbolColor : Color = .orange
-    
+    private var symbolCondition = ""    
     private var symbolColor: Color {
         if let currentWeather = weatherKitManager.currentWeather, weatherKitManager.checkWeather(weather: currentWeather) {
                 return .orange
@@ -36,8 +34,6 @@ struct ContentView: View {
                         if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
                         } else {
-                            
-                                
                                 
                                 VStack(alignment: .center){
                                     
@@ -61,14 +57,7 @@ struct ContentView: View {
                                     Text("\(locationManager.cityName)")
                                 }
                                 .foregroundStyle(.black)
-                                
-                            
-                                 
-        //                    GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather)
-                            
-                            
-        //                    OptimalTime(timeList: weatherKitManager.safeWeather)
-                            
+
                             Desc(timeList: weatherKitManager.safeWeather)
                                 .foregroundStyle(.black)
                         }
@@ -77,34 +66,8 @@ struct ContentView: View {
                     Spacer()
                     Spacer()
                     
-                    
-                    
                     GraphView(weatherKitManager: weatherKitManager, hourWeatherList: weatherKitManager.allWeather, date: Date.now)
                     
-                    
-                    
-                    
-                    
-    //                Desc()
-                    
-    //                PlottingView(hourlyWeatherData: weatherKitManager.hourWeather)
-                    
-    //                Text("\(locationManager.cityName)")
-                    
-    //                Text("Latitude: \(locationManager.latitude), Longitude: \(locationManager.longitude)")
-    //                if let currentWeather = weatherKitManager.currentWeather {
-    //                    Text("Current Time: \(currentWeather.date.formatted())")
-    //                    Text("Current Weather: \(currentWeather.condition)")
-    //                }else {
-    //                    Text("Loading...")
-    //                }
-    //                ScrollView{
-    //                    ForEach(weatherKitManager.hourWeather.map { HourWeatherWrapper(hourWeather: $0) }, id: \.id) { hourWeatherWrapper in
-    //                        // Customize the view for each hourly weather data
-    //                        Text("\(hourWeatherWrapper.hourWeather.date.formatted()): \(hourWeatherWrapper.hourWeather.temperature.value), \(hourWeatherWrapper.hourWeather.precipitationChance), \(hourWeatherWrapper.hourWeather.condition)")
-    //                    }
-    //                    Text("\(weatherKitManager.hourWeather.count)")
-    //                }
                 }
                 .padding()
                 .task {
