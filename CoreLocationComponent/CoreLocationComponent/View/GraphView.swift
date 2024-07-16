@@ -81,7 +81,6 @@ struct GraphView: View {
                     .frame(height: 114)
                     
                 }
-            
         }
         .padding()
         .background{

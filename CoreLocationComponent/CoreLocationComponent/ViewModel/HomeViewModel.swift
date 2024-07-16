@@ -7,8 +7,31 @@
 //
 import Foundation
 import WeatherKit
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    
+    @Published var description: DescriptionModel
+    
+    init() {
+        description = DescriptionModel(conclusionDescription: "Undefined", timeDescription: "Undefined")
+    }
+    
+    var timeFormatter: DateFormatter = {
+           let formatter = DateFormatter()
+
+           if is24HourFormat(){
+               //24-hour
+               formatter.dateFormat = "HH"
+               
+           }else{
+               //12-hour
+               formatter.dateFormat = "ha"
+               
+           }
+           
+           return formatter
+       }()
     
     func prepareGraph(weathers: [HourWeather], safeWeather: [TimeRange]) -> [GraphModel] {
         var graphModels: [GraphModel] = []
@@ -28,5 +51,49 @@ class HomeViewModel: ObservableObject {
             graphModels.append(GraphModel(value: weather, weatherState: state))
         }
         return graphModels
+    }
+    
+    func updateDescription(timeList: [TimeRange]) {
+        let currentTime = Date()
+        let calendar = Calendar.current
+        let startOfTomorrow = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: currentTime)!)
+        let startOfToday = calendar.startOfDay(for: currentTime)
+        let startOf2Day = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 2, to: currentTime)!)
+        
+        var desc: LocalizedStringKey = ""
+        var timeDesc: LocalizedStringKey = ""
+
+        if !timeList.isEmpty{
+            let timeRange = timeList[0]
+            
+            let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
+
+            if adjustedEndTime >= calendar.startOfDay(for: startOf2Day) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
+                desc = LocalizedStringKey("Place order anytime you want")
+                timeDesc = LocalizedStringKey("No increasing delivery fee for today")
+                
+            }else if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime {
+                desc = LocalizedStringKey("Order now for optimal delivery fee")
+                timeDesc = LocalizedStringKey("Optimal delivery fee until  \(timeFormatter.string(from: adjustedEndTime))")
+                
+            } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
+                desc = LocalizedStringKey("Get optimal delivery fee tomorrow")
+                timeDesc = LocalizedStringKey("Optimal delivery fee starts tomorrow at \(timeFormatter.string(from: timeRange.startTime))")
+                
+            } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
+                desc = LocalizedStringKey("Order later to avoid increased fare")
+                timeDesc = LocalizedStringKey("Optimal delivery fee start at  \(timeFormatter.string(from: timeRange.startTime))")
+                
+            }
+            else {
+                desc = LocalizedStringKey("We haven't found the optimal time yet")
+            }
+        } else {
+            desc = LocalizedStringKey("We haven't found the optimal time yet")
+            
+        }
+        
+        self.description = DescriptionModel(conclusionDescription: desc, timeDescription: timeDesc)
+        print("update Description: \(description.conclusionDescription)")
     }
 }

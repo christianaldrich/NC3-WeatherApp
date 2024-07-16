@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct CoreLocationComponentApp: App {
-    @ObservedObject var weatherKitManager: WeatherManager = WeatherManager()
-    @ObservedObject var locationManager: LocationManager = LocationManager()
+    @StateObject var weatherKitManager: WeatherManager = WeatherManager()
+    @StateObject var locationManager: LocationManager = LocationManager()
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: viewModel)
                 .environmentObject(weatherKitManager)
                 .environmentObject(locationManager)
         }

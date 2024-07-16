@@ -11,7 +11,8 @@ struct ContentView: View {
     
     @EnvironmentObject var weatherKitManager: WeatherManager
     @EnvironmentObject var locationManager: LocationManager
-    @ObservedObject var viewModel = HomeViewModel()
+    @ObservedObject var viewModel: HomeViewModel
+    @State var descr: DescriptionModel = DescriptionModel(conclusionDescription: "Undefined", timeDescription: "Undefined")
     
     private var symbolColor: Color {
         if let currentWeather = weatherKitManager.currentWeather, weatherKitManager.checkWeather(weather: currentWeather) {
@@ -49,12 +50,21 @@ struct ContentView: View {
                                 }
                                 .foregroundStyle(.black)
 
-                            Desc()
+                            Desc(descriptionModel: $descr)
                                 .foregroundStyle(.black)
+                                .onAppear{
+                                    print("appear update: \(weatherKitManager.safeWeather) : \(descr)")
+                                    viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
+                                    descr = viewModel.description
+                                }
+                                .onChange(of: weatherKitManager.safeWeather, perform: { _ in
+                                    viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
+                                    descr = viewModel.description
+                                    print("updating to:  \(weatherKitManager.safeWeather) : \(descr)")
+                                })
                         }
                     }
                     
-                    Spacer()
                     Spacer()
                     
                     GraphView(hourModelList: viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), date: Date())
@@ -72,6 +82,7 @@ struct ContentView: View {
                             }
                 .onAppear{
                     Task{
+                        print("ON Apppear \(viewModel.description.conclusionDescription)")
                         await weatherKitManager.getWeather(latitude: locationManager.latitude, longitude: locationManager.longitude)
                     }
                 }
