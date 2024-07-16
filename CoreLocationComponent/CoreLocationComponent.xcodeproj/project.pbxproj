@@ -12,7 +12,6 @@
 		0D87291B2C3FB6020077C46C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D87291A2C3FB6020077C46C /* Time.swift */; };
 		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4EDE2C40E335004C4FC9 /* Desc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* Desc.swift */; };
-		637113BF2C4009F5002D4C10 /* OptimalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637113BE2C4009F5002D4C10 /* OptimalTime.swift */; };
 		63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7A73F2C44C65200BB9808 /* LottieView.swift */; };
 		63D7A7432C44C6A300BB9808 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 63D7A7422C44C6A300BB9808 /* Lottie */; };
 		AC4BA63B2C4500B1009FF334 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4BA63A2C4500B0009FF334 /* WidgetKit.framework */; };
@@ -64,7 +63,6 @@
 		0D87291A2C3FB6020077C46C /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		631D4EDD2C40E335004C4FC9 /* Desc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desc.swift; sourceTree = "<group>"; };
-		637113BE2C4009F5002D4C10 /* OptimalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimalTime.swift; sourceTree = "<group>"; };
 		63D7A73F2C44C65200BB9808 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetAppsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4BA63A2C4500B0009FF334 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -209,7 +207,6 @@
 				BAE9DA2A2C3ECBEA00965DAA /* HomePageView.swift */,
 				BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */,
 				BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */,
-				637113BE2C4009F5002D4C10 /* OptimalTime.swift */,
 				631D4EDD2C40E335004C4FC9 /* Desc.swift */,
 				BA08B6AF2C43AAA600FDC291 /* SafeWeatherBackground.swift */,
 				63D7A73E2C44C64000BB9808 /* Lottie */,
@@ -346,7 +343,6 @@
 				BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */,
 				63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */,
 				0D87291B2C3FB6020077C46C /* Time.swift in Sources */,
-				637113BF2C4009F5002D4C10 /* OptimalTime.swift in Sources */,
 				BAE9DA2B2C3ECBEA00965DAA /* HomePageView.swift in Sources */,
 				0D8729182C3E43EC0077C46C /* Weather.swift in Sources */,
 			);
@@ -372,7 +368,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = UC6TG39XPP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -384,7 +380,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -402,7 +398,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = UC6TG39XPP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -414,7 +410,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -553,7 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = UC6TG39XPP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -569,7 +565,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -589,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = UC6TG39XPP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -605,7 +601,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
