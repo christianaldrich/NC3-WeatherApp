@@ -7,19 +7,52 @@
 
 import SwiftUI
 
+
+func is24HourFormat() -> Bool {
+    let locale = Locale.current
+    let dateFormatter = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale)
+    
+    // 'a' indicates the presence of AM/PM symbols, hence it's a 12-hour format
+    if dateFormatter?.contains("a") == true {
+        return false
+    } else {
+        return true
+    }
+}
+
 struct Desc: View {
+    
+     var timeFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+    //        formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
+    //        formatter.pmSymbol = "pm"
+    //        formatter.amSymbol = "am"
+            
+            if is24HourFormat(){
+                //24-hour
+                formatter.dateFormat = "HH"
+                
+            }else{
+                //12-hour
+                formatter.dateFormat = "ha"
+                
+            }
+            
+            return formatter
+        }()
+    
     @State var desc: LocalizedStringKey = ""
     let timeList : [TimeRange]
     @State var timeDesc: LocalizedStringKey = ""
     
-    private let timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a" // "h a" will format the time as "1 PM", "2 AM", etc.
-        formatter.pmSymbol = "pm"
-        formatter.amSymbol = "am"
-        return formatter
-    }()
-    
+//    private let timeFormatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "h:mm a" // "h a" will format the time as "1 PM", "2 AM", etc.
+//        formatter.pmSymbol = "pm"
+//        formatter.amSymbol = "am"
+//        return formatter
+//    }()
+//    
     var body: some View {
         VStack(spacing: 10){
             Text(desc)
@@ -46,8 +79,9 @@ struct Desc: View {
         let calendar = Calendar.current
         let startOfTomorrow = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: currentTime)!)
         let startOfToday = calendar.startOfDay(for: currentTime)
+        let startOf2Day = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 2, to: currentTime)!)
         
-        print("Current time: \(currentTime)")
+//        print("Current time: \(currentTime)")
         
         if !timeList.isEmpty{
             let timeRange = timeList[0]
@@ -55,27 +89,34 @@ struct Desc: View {
             let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
             
             
-            print("Time range start: \(timeRange.startTime), end: \(timeRange.endTime)")
+//            print("Time range start: \(timeRange.startTime), end: \(timeRange.endTime)")
+//            print(startOfToday)
+//            print(startOfTomorrow)
             
             
-            if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime {
-                desc = LocalizedStringKey("You can get optimal delivery time now")
-                timeDesc = LocalizedStringKey("until \(timeFormatter.string(from: adjustedEndTime))")
+            
+            if adjustedEndTime >= calendar.startOfDay(for: startOf2Day) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
+                desc = LocalizedStringKey("Place order anytime you want")
+                timeDesc = LocalizedStringKey("No increasing delivery fee for today")
+                
+            }else if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime {
+                desc = LocalizedStringKey("Order now for optimal delivery fee")
+                timeDesc = LocalizedStringKey("Optimal delivery fee until  \(timeFormatter.string(from: adjustedEndTime))")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
-                desc = LocalizedStringKey("Delivery fee maybe increased")
-                timeDesc = LocalizedStringKey("optimal delivery fee start from tomorrow")
+                desc = LocalizedStringKey("Get optimal delivery fee tomorrow")
+                timeDesc = LocalizedStringKey("Optimal delivery fee starts tomorrow at \(timeFormatter.string(from: timeRange.startTime))")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
-                desc = LocalizedStringKey("Delivery fee maybe increased")
-                timeDesc = LocalizedStringKey("optimal delivery fee start from \(timeFormatter.string(from: timeRange.startTime))")
+                desc = LocalizedStringKey("Order later to avoid increased fare")
+                timeDesc = LocalizedStringKey("Optimal delivery fee start at  \(timeFormatter.string(from: timeRange.startTime))")
                 
             }
             else {
                 desc = LocalizedStringKey("We haven't found the optimal time yet")
             }
         } else {
-            desc = LocalizedStringKey("We haven't found the optimal time yet") //TODO: ganti copywriting
+            desc = LocalizedStringKey("We haven't found the optimal time yet")
             
         }
     }
