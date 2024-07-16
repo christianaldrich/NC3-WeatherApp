@@ -55,7 +55,6 @@
       }
     },
     "No increasing delivery fee for today" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -148,7 +147,6 @@
       }
     },
     "Place order anytime you want" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
