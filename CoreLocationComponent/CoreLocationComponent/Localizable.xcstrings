@@ -35,6 +35,7 @@
       }
     },
     "Hello, World!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -166,6 +167,9 @@
           }
         }
       }
+    },
+    "Undefined" : {
+
     },
     "We haven't found the optimal time yet" : {
       "localizations" : {

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DataService{
-    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.pang.CoreLocationComponent")) private var safeWeatherData = " "
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) private var safeWeatherData = " "
     
     func weatherData ()-> String{
         return safeWeatherData
