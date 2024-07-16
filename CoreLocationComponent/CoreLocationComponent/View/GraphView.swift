@@ -10,13 +10,36 @@ import Foundation
 import Charts
 import WeatherKit
 
+func is24HourFormat() -> Bool {
+    let locale = Locale.current
+    let dateFormatter = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale)
+    
+    // 'a' indicates the presence of AM/PM symbols, hence it's a 12-hour format
+    if dateFormatter?.contains("a") == true {
+        return false
+    } else {
+        return true
+    }
+}
+
+
 struct GraphView: View {
     
-    private let timeFormatter: DateFormatter = {
+    var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
-        formatter.pmSymbol = "pm"
-        formatter.amSymbol = "am"
+//        formatter.dateFormat = "ha" // "h a" will format the time as "1 PM", "2 AM", etc.
+//        formatter.pmSymbol = "pm"
+//        formatter.amSymbol = "am"
+        
+        if is24HourFormat(){
+            //24-hour
+            formatter.dateFormat = "HH"
+            
+        }else{
+            //12-hour
+            formatter.dateFormat = "ha"
+        }
+        
         return formatter
     }()
     
@@ -52,7 +75,7 @@ struct GraphView: View {
                             ForEach(groupedWeather) { group in
                                     if group.type == .safe{
                                         ZStack {
-                                            RoundedRectangle(cornerRadius: 10)
+                                            RoundedRectangle(cornerRadius: 5)
                                                 .foregroundStyle(Color.blue.opacity(1))
                                                 .frame(height: 104)
                                             
@@ -128,7 +151,7 @@ struct GraphView: View {
             HStack(spacing: 18) {
                 ForEach(items, id: \.date) { hourWeatherItem in
                     VStack(spacing: 20) {
-                        let (textColor, fillCheck, symbolColor,littleSymbolDesc, littleSymbolColor) = getTextColorAndFillCheck(for: hourWeatherItem.date)
+                        let (textColor, fillCheck, symbolColor,littleSymbolDesc, littleSymbolColor, fillLittleSymbol) = getTextColorAndFillCheck(for: hourWeatherItem.date, item: hourWeatherItem)
                         
                         Text(timeFormatter.string(from: hourWeatherItem.date))
                             .foregroundStyle(textColor)
@@ -142,28 +165,29 @@ struct GraphView: View {
                                 .foregroundStyle(symbolColor)
                         }
                         
-                        
-                        
-                        
-                        
-                        Image(systemName: "\(littleSymbolDesc).circle.fill")
+                        Image(systemName: "\(littleSymbolDesc).circle\(fillLittleSymbol)")
                             .foregroundStyle(littleSymbolColor)
-                        
-//                        Image(systemName: "checkmark.circle.fill")
-//                            .foregroundStyle(Color.green)
                     }
+                    .padding(5)
                 }
             }
         }
     
-    private func getTextColorAndFillCheck(for date: Date) -> (Color, String, Color, String, Color) {
+    private func getTextColorAndFillCheck(for date: Date, item: HourWeather) -> (Color, String, Color, String, Color, String) {
         
         //bisa input .circle kalo udh mentok
         
             if weatherKitManager.safeWeather.contains(where: { $0.startTime <= date && $0.endTime >= date }) {
-                return (.white, ".fill", .white, "checkmark", .green)
+                return (.white, ".fill", .white, "checkmark", .white, ".fill")
             } else {
-                return (.black, ".fill", .gray,"exclamationmark", .red)
+                
+                if item.condition == .drizzle {
+                    return (.black, ".fill", .gray, "exclamationmark", .orange, "")
+                }
+                else {
+                    return (.black, ".fill", .gray,"exclamationmark", .red, "")
+                }
+                
             }
         
         
