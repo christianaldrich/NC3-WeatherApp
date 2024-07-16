@@ -64,6 +64,16 @@
         }
       }
     },
+    "Optimal delivery fee before  %@" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongkir optimal sebelum jam %@"
+          }
+        }
+      }
+    },
     "Optimal delivery fee start at  %@" : {
       "localizations" : {
         "id" : {
@@ -80,38 +90,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ongkir optimal mulai besok jam %@"
-          }
-        }
-      }
-    },
-    "Optimal delivery fee until  %@" : {
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ongkir optimal sampai jam %@"
-          }
-        }
-      }
-    },
-    "Optimal delivery times:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waktu Pemesanan Optimal"
-          }
-        }
-      }
-    },
-    "or %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "atau %@"
           }
         }
       }
@@ -152,17 +130,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Order kapan aja yang kamu mau"
-          }
-        }
-      }
-    },
-    "to %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- %@"
           }
         }
       }

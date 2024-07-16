@@ -89,7 +89,7 @@ struct Desc: View {
                 
             }else if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime {
                 desc = LocalizedStringKey("Order now for optimal delivery fee")
-                timeDesc = LocalizedStringKey("Optimal delivery fee until  \(timeFormatter.string(from: adjustedEndTime))")
+                timeDesc = LocalizedStringKey("Optimal delivery fee before  \(timeFormatter.string(from: adjustedEndTime))")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
                 desc = LocalizedStringKey("Get optimal delivery fee tomorrow")
