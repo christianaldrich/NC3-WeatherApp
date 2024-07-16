@@ -184,7 +184,6 @@
 				0D89B9662C462E2B00DED358 /* ViewModel */,
 				BAE9DA292C3ECBDF00965DAA /* View */,
 				0D8729192C3E45C40077C46C /* CoreLocationComponent.entitlements */,
-				BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */,
 				631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */,
 				0D8729162C3E43E30077C46C /* Model */,
 				BA029B682C3E3998002ECCDB /* Info.plist */,
@@ -216,6 +215,7 @@
 		BAE9DA292C3ECBDF00965DAA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */,
 				BA029B5A2C3E3951002ECCDB /* ContentView.swift */,
 				BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */,
 				631D4EDD2C40E335004C4FC9 /* Desc.swift */,

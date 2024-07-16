@@ -13,8 +13,6 @@ import WeatherKit
 func is24HourFormat() -> Bool {
     let locale = Locale.current
     let dateFormatter = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale)
-    
-    // 'a' indicates the presence of AM/PM symbols, hence it's a 12-hour format
     if dateFormatter?.contains("a") == true {
         return false
     } else {

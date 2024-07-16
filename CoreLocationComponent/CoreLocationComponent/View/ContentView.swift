@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var weatherKitManager = WeatherManager()
-    @StateObject var locationManager = LocationManager()
+    @EnvironmentObject var weatherKitManager: WeatherManager
+    @EnvironmentObject var locationManager: LocationManager
     
     private var symbolCondition = ""    
     private var symbolColor: Color {
