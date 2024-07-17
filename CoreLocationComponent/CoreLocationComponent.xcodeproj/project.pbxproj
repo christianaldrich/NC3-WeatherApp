@@ -28,6 +28,9 @@
 		AC4BA6442C4500B2009FF334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
 		AC4BA6482C4500B2009FF334 /* WidgetAppsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6502C4501D5009FF334 /* DataService.swift */; };
+		ACB43ACC2C463C2E0024D6F9 /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */; };
+		ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
+		ACB43ACF2C4649B70024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */; };
 		BA029B5B2C3E3951002ECCDB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B5A2C3E3951002ECCDB /* HomeView.swift */; };
 		BA029B5D2C3E3952002ECCDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
@@ -87,6 +90,7 @@
 		AC4BA6452C4500B2009FF334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC4BA6502C4501D5009FF334 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		AC4BA6522C4505F7009FF334 /* WidgetAppsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetAppsExtension.entitlements; sourceTree = "<group>"; };
+		ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAppsUtil.swift; sourceTree = "<group>"; };
 		BA029B552C3E3951002ECCDB /* CoreLocationComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreLocationComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationComponentApp.swift; sourceTree = "<group>"; };
 		BA029B5A2C3E3951002ECCDB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				AC4BA63F2C4500B1009FF334 /* WidgetAppsBundle.swift */,
 				AC4BA6412C4500B1009FF334 /* WidgetApp.swift */,
 				AC4BA6502C4501D5009FF334 /* DataService.swift */,
+				ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */,
 				AC4BA6432C4500B2009FF334 /* Assets.xcassets */,
 				AC4BA6452C4500B2009FF334 /* Info.plist */,
 			);
@@ -388,6 +393,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4BA6402C4500B1009FF334 /* WidgetAppsBundle.swift in Sources */,
+				ACB43ACC2C463C2E0024D6F9 /* PlottingView.swift in Sources */,
+				ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */,
 				AC4BA6422C4500B1009FF334 /* WidgetApp.swift in Sources */,
 				0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */,
 				AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */,
@@ -414,6 +421,9 @@
 				BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */,
 				63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */,
 				0D87291B2C3FB6020077C46C /* Time.swift in Sources */,
+				637113BF2C4009F5002D4C10 /* OptimalTime.swift in Sources */,
+				ACB43ACF2C4649B70024D6F9 /* WidgetAppsUtil.swift in Sources */,
+				BAE9DA2B2C3ECBEA00965DAA /* HomePageView.swift in Sources */,
 				0D8729182C3E43EC0077C46C /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
