@@ -33,6 +33,7 @@ enum currentWeatherWidgetUtil: Int, Codable, Hashable, Identifiable{
         }
     }
     
+        
     var statusCondition : String {
         switch self{
         case .risk : return "rain until"

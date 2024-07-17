@@ -12,12 +12,15 @@ struct Provider: TimelineProvider {
     let data = DataService()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .safe)
+        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
+//        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .risk)
+        
         
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .safe)
+        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
+//        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .risk)
         
         completion(entry)
     }
@@ -33,7 +36,8 @@ struct Provider: TimelineProvider {
         
         for hourOffset in 0 ..< 24 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: .safe)
+            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
+//            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: .risk)
             entries.append(entry)
         }
         
@@ -69,15 +73,16 @@ struct WidgetAppEntryView : View {
         switch widgetFamily{
         case .systemSmall:
             ZStack{
+                Color.init("Background")
                 VStack{
-                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.blue : Color.gray)
+                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.roundedBackground : Color.roundedColorRain)
                         .frame(width: 158, height: 79)
                         .offset(y: 45)
                 }
                 VStack(alignment:.leading){
                     Image(systemName: weatherUtil.imageSystemName)
                         .font(.system(size: 30))
-                        .foregroundStyle(weatherUtil == .safe ? Color.orange : Color.gray)
+                        .foregroundStyle(weatherUtil == .safe ? Color.orange : Color.roundedColorRain)
                         .padding(.bottom, 7)
                     
                     Text(weatherUtil.copyWritingFeeDelivery).fontWeight(.regular).font(.system(size: 11)).padding(.bottom, 5)
@@ -88,7 +93,7 @@ struct WidgetAppEntryView : View {
                         .bold()
                         .foregroundStyle(Color.white)
                     
-                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)").fontWeight(.regular).font(.system(size: 15))
+                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)).fontWeight(.regular).font(.system(size: 15))
                         .foregroundStyle(Color.white)
                 }
             }
@@ -96,7 +101,7 @@ struct WidgetAppEntryView : View {
         default:
             ZStack{
                 VStack{
-                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.blue : Color.gray)
+                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.roundedBackground : Color.roundedColorRain)
                         .frame(width: 338, height: 59)
                         .offset(y: -50)
                 }
@@ -107,7 +112,7 @@ struct WidgetAppEntryView : View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.white)
-                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)")
+                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime))
                         .fontWeight(.regular)
                         .font(.system(size: 12))
                         .foregroundStyle(Color.white)
@@ -151,6 +156,14 @@ struct WidgetAppEntryView : View {
         
         return (startTimeString, endTimeString)
     }
+    
+    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
+            if weatherUtil == .safe {
+                return "\(weatherUtil.statusCondition) \(formattedTextofTime.1)"
+            } else {
+                return "\(weatherUtil.statusCondition) \(formattedTextofTime.0)"
+            }
+        }
 }
 
 struct WidgetApp: Widget {
@@ -167,10 +180,9 @@ struct WidgetApp: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("-name apps-")
-        .description("Help you to know the best time for ordering food")
-        //bisa ada 2
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .configurationDisplayName("Weathery")
+        .description(LocalizedStringKey("Help you to know the best time for ordering food"))
+        .supportedFamilies([.systemSmall])
     }
 }
 

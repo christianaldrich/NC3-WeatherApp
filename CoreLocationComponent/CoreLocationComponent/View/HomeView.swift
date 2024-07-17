@@ -24,17 +24,16 @@ struct HomeView: View {
             if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
                 VStack{
                     Spacer()
-                    
-                    VStack(){
-                        if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
+                    if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
-                        } else {
+                    } else {
+                        VStack(spacing:54){
                             HStack(alignment: .top) {
                                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(viewModel.checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 53, height: 51)
-                                            .foregroundStyle(weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) ? .orange : .gray)
+                                            .foregroundStyle(weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) ? .orange : .rainSymbol)
                                     VStack(alignment: .leading){
                                         Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
                                             .font(.title)
@@ -69,14 +68,11 @@ struct HomeView: View {
                                     }
                             }
                         }
+                        .padding(.bottom, 65)
+                        GraphView(viewModel: viewModel,
+                                  groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
+                        .padding(.bottom, 16)
                     }
-                    .padding(.bottom, 65)
-                    
-                    
-                    GraphView(viewModel: viewModel,
-                              groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
-                    .padding(.bottom, 16)
-                    
                 }
                 .padding()
                 .task {
@@ -99,7 +95,19 @@ struct HomeView: View {
                     }
                 }
             } else {
-                Text("Perimission not granted")
+                VStack(spacing: 40){
+                    Image(systemName: "mappin.slash.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80, height: 80)
+                        .foregroundStyle(Color.descText)
+                    Text("Perimission not granted! Please update App Location permission.")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.descText)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal, 16)
             }
             
         }

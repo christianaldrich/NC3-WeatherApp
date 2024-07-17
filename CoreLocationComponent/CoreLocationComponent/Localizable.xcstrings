@@ -41,6 +41,7 @@
       }
     },
     "Chance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -70,7 +71,11 @@
         }
       }
     },
+    "Help you to know the best time for ordering food" : {
+
+    },
     "Hour" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -141,6 +146,7 @@
       }
     },
     "Perimission not granted" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -149,6 +155,9 @@
           }
         }
       }
+    },
+    "Perimission not granted! Please update App Location permission." : {
+
     },
     "Place order anytime you want" : {
       "localizations" : {
@@ -179,6 +188,9 @@
           }
         }
       }
+    },
+    "Weathery" : {
+
     }
   },
   "version" : "1.0"

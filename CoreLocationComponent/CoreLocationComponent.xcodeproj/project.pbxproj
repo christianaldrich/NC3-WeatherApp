@@ -19,6 +19,8 @@
 		0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9752C46AAD700DED358 /* PackageConstant.swift */; };
 		0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9852C476DEB00DED358 /* Rain 4.json */; };
 		0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9862C476DEC00DED358 /* Clear 4.json */; };
+		0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
+		0D89B98A2C47BF1800DED358 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */; };
 		63561DA92C47732A00D048C9 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 63561DA72C47732A00D048C9 /* Rain 4.json */; };
@@ -34,7 +36,6 @@
 		AC4BA6442C4500B2009FF334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
 		AC4BA6482C4500B2009FF334 /* WidgetAppsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6502C4501D5009FF334 /* DataService.swift */; };
-		ACB43ACC2C463C2E0024D6F9 /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */; };
 		ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		ACB43ACF2C4649B70024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */; };
@@ -44,7 +45,6 @@
 		BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B662C3E396D002ECCDB /* LocationManager.swift */; };
 		BA08B6BA2C46C6D700FDC291 /* LottieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08B6B92C46C6D700FDC291 /* LottieViewModel.swift */; };
 		BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */; };
-		BAE9DA2F2C3EE60800965DAA /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,6 @@
 		BA029B6A2C3E9C1E002ECCDB /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = System/Library/Frameworks/WeatherKit.framework; sourceTree = SDKROOT; };
 		BA08B6B92C46C6D700FDC291 /* LottieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewModel.swift; sourceTree = "<group>"; };
 		BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
-		BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlottingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,7 +280,6 @@
 			children = (
 				0D89B96F2C46A53400DED358 /* Graph */,
 				BA029B5A2C3E3951002ECCDB /* HomeView.swift */,
-				BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */,
 				631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */,
 				63D7A73E2C44C64000BB9808 /* Lottie */,
 			);
@@ -376,8 +374,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */,
 				63561DAD2C47736200D048C9 /* Localizable.xcstrings in Resources */,
-				AC4BA6442C4500B2009FF334 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4BA6402C4500B1009FF334 /* WidgetAppsBundle.swift in Sources */,
-				ACB43ACC2C463C2E0024D6F9 /* PlottingView.swift in Sources */,
 				ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */,
 				AC4BA6422C4500B1009FF334 /* WidgetApp.swift in Sources */,
 				0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */,
@@ -418,7 +415,6 @@
 				BA029B5B2C3E3951002ECCDB /* HomeView.swift in Sources */,
 				0D89B9682C462EA700DED358 /* HomeViewModel.swift in Sources */,
 				0D89B96A2C463C3100DED358 /* GraphModel.swift in Sources */,
-				BAE9DA2F2C3EE60800965DAA /* PlottingView.swift in Sources */,
 				BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */,
 				0D89B9762C46AAD700DED358 /* PackageConstant.swift in Sources */,
 				BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */,
@@ -454,7 +450,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UC6TG39XPP;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -466,7 +462,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -484,7 +480,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UC6TG39XPP;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -496,7 +492,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -635,10 +631,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = UC6TG39XPP;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Weathery;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Privacy Needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -651,7 +648,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -671,10 +668,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = UC6TG39XPP;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Weathery;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Privacy Needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -687,7 +685,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
