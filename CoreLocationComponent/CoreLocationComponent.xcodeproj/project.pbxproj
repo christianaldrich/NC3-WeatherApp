@@ -20,6 +20,8 @@
 		0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9852C476DEB00DED358 /* Rain 4.json */; };
 		0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9862C476DEC00DED358 /* Clear 4.json */; };
 		0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
+		0D89B98B2C488E4B00DED358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
+		0D89B98C2C488E4C00DED358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
 		631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */; };
 		6349A2CB2C480F900004BD55 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6349A2CA2C480F900004BD55 /* Localizable.xcstrings */; };
 		6349A2CC2C4811520004BD55 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6349A2CA2C480F900004BD55 /* Localizable.xcstrings */; };
@@ -367,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6349A2CC2C4811520004BD55 /* Localizable.xcstrings in Resources */,
+				0D89B98C2C488E4C00DED358 /* Assets.xcassets in Resources */,
 				0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +382,7 @@
 				BA029B602C3E3952002ECCDB /* Preview Assets.xcassets in Resources */,
 				6349A2CB2C480F900004BD55 /* Localizable.xcstrings in Resources */,
 				BA029B5D2C3E3952002ECCDB /* Assets.xcassets in Resources */,
+				0D89B98B2C488E4B00DED358 /* Assets.xcassets in Resources */,
 				0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */,
 				0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */,
 			);
