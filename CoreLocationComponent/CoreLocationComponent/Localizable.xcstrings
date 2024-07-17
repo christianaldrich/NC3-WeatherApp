@@ -34,16 +34,6 @@
         }
       }
     },
-    "Hello, World!" : {
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halo, Dunia!"
-          }
-        }
-      }
-    },
     "Hour" : {
       "localizations" : {
         "id" : {
@@ -130,6 +120,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Order kapan aja yang kamu mau"
+          }
+        }
+      }
+    },
+    "Undefined" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasil tidak ditemukan"
           }
         }
       }
