@@ -4,6 +4,9 @@
     "" : {
 
     },
+    " " : {
+
+    },
     "%@" : {
       "localizations" : {
         "id" : {
@@ -43,6 +46,9 @@
           }
         }
       }
+    },
+    "Help you to know the best time for ordering food" : {
+
     },
     "Increased delivery fee" : {
       "localizations" : {
@@ -183,6 +189,9 @@
           }
         }
       }
+    },
+    "Weathery" : {
+
     }
   },
   "version" : "1.0"
