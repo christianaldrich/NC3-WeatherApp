@@ -95,7 +95,7 @@ struct WidgetAppEntryView : View {
 //                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)").fontWeight(.regular).font(.system(size: 15))
 //                        .foregroundStyle(Color.white)
                     
-                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)").fontWeight(.regular).font(.system(size: 15))
+                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)).fontWeight(.regular).font(.system(size: 15))
                         .foregroundStyle(Color.white)
                 }
             }
@@ -159,10 +159,13 @@ struct WidgetAppEntryView : View {
         return (startTimeString, endTimeString)
     }
     
-//    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
-//
-//        
-//        }
+    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
+            if weatherUtil == .safe {
+                return "\(weatherUtil.statusCondition) \(formattedTextofTime.1)"
+            } else {
+                return "\(weatherUtil.statusCondition) \(formattedTextofTime.0)"
+            }
+        }
 }
 
 struct WidgetApp: Widget {
