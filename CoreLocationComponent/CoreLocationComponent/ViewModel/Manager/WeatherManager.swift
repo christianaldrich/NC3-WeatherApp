@@ -23,8 +23,11 @@ class WeatherManager: ObservableObject {
                 weather = try await Task.detached(priority: .userInitiated) {
                     return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
                 }.value
-                safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
-
+                if !safeWeather.isEmpty {
+                    safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+                }else {
+                    safeWeatherData = "All rain for today"
+                }
             } catch {
                 fatalError("\(error)")
             }
