@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 @main
 struct CoreLocationComponentApp: App {
+    
+    init(){
+        WidgetCenter.shared.reloadTimelines(ofKind: "WidgetApp")
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
