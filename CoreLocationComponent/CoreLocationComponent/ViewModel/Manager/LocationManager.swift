@@ -33,8 +33,6 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
                     locationManager?.desiredAccuracy = kCLLocationAccuracyBest
                     locationManager?.requestWhenInUseAuthorization()
                     locationManager?.startUpdatingLocation()
-                } else {
-                    print("Show an alert letting them know this is off and to go turn it on.")
                 }
         }
     
@@ -64,11 +62,6 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
                             }else{
                                 self?.cityName = "Somewhere"
                             }
-                            
-                            
-                            
-                        }else {
-                            print("error")
                         }
                     }
             
@@ -77,7 +70,6 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            print("Failed to find user's location: \(error.localizedDescription)")
         }
     
     

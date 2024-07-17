@@ -138,6 +138,7 @@
       }
     },
     "Perimission not granted" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -146,6 +147,9 @@
           }
         }
       }
+    },
+    "Perimission not granted! Please update App Location permission." : {
+
     },
     "Place order anytime you want" : {
       "localizations" : {
