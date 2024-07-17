@@ -23,7 +23,3 @@ struct PlottingView: View {
         }
     }
 }
-
-//#Preview {
-//    PlottingView()
-//}

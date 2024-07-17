@@ -14,10 +14,15 @@ struct CoreLocationComponentApp: App {
     init(){
         WidgetCenter.shared.reloadTimelines(ofKind: "WidgetApp")
     }
+    @StateObject var weatherKitManager: WeatherManager = WeatherManager()
+    @StateObject var locationManager: LocationManager = LocationManager()
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(viewModel: viewModel)
+                .environmentObject(weatherKitManager)
+                .environmentObject(locationManager)
         }
     }
 }

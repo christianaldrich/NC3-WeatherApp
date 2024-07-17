@@ -12,6 +12,8 @@ import CoreLocation
 
 class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
     
+    static var shared = LocationManager()
+    
     var locationManager : CLLocationManager?
     
     @Published var longitude:Double = 0.0
@@ -40,8 +42,6 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
         if let location = locations.last{
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
-//            print("Lat : \(latitude)")
-//            print("Long : \(longitude)")
             
             DispatchQueue.main.async{
                 self.currentLocation = location
@@ -52,31 +52,17 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate{
             geocoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
                         if error == nil {
                             let firstLocation = placemarks?[0]
-//                            if let firstLocation = placemarks?[0],
-//                               let cityName = firstLocation.locality, let countryName = firstLocation.country { // get the city name
-////                                self?.locationManager!.stopUpdatingLocation()
-////                                print("Placemarks : \(placemarks?[0])")
-//                                
-//                                
-//                                DispatchQueue.main.async{
-//                                    self!.cityName = cityName
-//                                }
-//                                
-//                            }
                             let cityName = firstLocation?.locality
                             let countryName = firstLocation?.country
                             
                             if cityName != nil{
                                 DispatchQueue.main.async {
                                     self!.cityName = cityName!
-//                                    print(cityName)
                                 }
                             }else if countryName != nil{
                                 self!.cityName = countryName!
-//                                print(cityName)
                             }else{
                                 self?.cityName = "Somewhere"
-//                                print(cityName)
                             }
                             
                             

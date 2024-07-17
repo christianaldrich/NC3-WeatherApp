@@ -9,21 +9,25 @@ import Foundation
 import WeatherKit
 import SwiftUI
 
-@MainActor class WeatherManager:ObservableObject {
+@MainActor
+class WeatherManager: ObservableObject {
     
-    
-    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) var safeWeatherData = " "
+    static var shared = WeatherManager()
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) var safeWeatherData = " "
     
     @Published var weather: Weather?
     
     func getWeather(latitude: Double, longitude: Double) {
-        async {
+        Task.init{
             do {
                 weather = try await Task.detached(priority: .userInitiated) {
                     return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
                 }.value
-                safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
-
+                if !safeWeather.isEmpty {
+                    safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+                }else {
+                    safeWeatherData = "All rain for today"
+                }
             } catch {
                 fatalError("\(error)")
             }
@@ -34,10 +38,7 @@ import SwiftUI
             let currentDate = Date()
             let calendar = Calendar.current
             
-            // Start of today
             let startOfToday = calendar.startOfDay(for: currentDate)
-            
-            // End of next day
             let endOfNextDay = calendar.date(byAdding: .day, value: 1, to: startOfToday)!
             
             let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > currentDate && $0.date < endOfNextDay }
@@ -99,10 +100,10 @@ import SwiftUI
             }
         }
         if startDate != Date.distantPast {
-            timeRange.append(TimeRange(startTime: startDate, endTime: todayWeather.last?.date ?? Date()))
+            let adjustedEndDate = todayWeather.last?.date ?? Date()
+               let lastMomentOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: adjustedEndDate) ?? Date()
+               timeRange.append(TimeRange(startTime: startDate, endTime: lastMomentOfDay))
         }
-        
-//        print(timeRange)
         return timeRange
     }
     
@@ -110,59 +111,12 @@ import SwiftUI
         
         switch weather.condition{
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
-//        case .mostlyClear, .mostlyCloudy:
                 return false
             default:
                 return true
         }
         
         
-    }
-    
-    struct GroupedWeather: Identifiable {
-        var id = UUID()
-        var type: WeatherType
-        var items: [HourWeather]
-    }
-
-    enum WeatherType {
-        case safe
-        case risky
-    }
-
-    
-    func groupWeatherData(_ weatherData: [HourWeather]) -> [GroupedWeather] {
-        var groupedWeather: [GroupedWeather] = []
-        
-        var currentType: WeatherType?
-        var currentItems: [HourWeather] = []
-        
-        for weatherItem in weatherData {
-            let isSafe = safeWeather.contains { $0.startTime <= weatherItem.date && $0.endTime >= weatherItem.date }
-            let weatherType: WeatherType = isSafe ? .safe : .risky
-            
-            if currentType == nil {
-                currentType = weatherType
-            }
-            
-            if currentType == weatherType {
-                currentItems.append(weatherItem)
-            } else {
-                groupedWeather.append(GroupedWeather(type: currentType!, items: currentItems))
-                currentType = weatherType
-                currentItems = [weatherItem]
-            }
-        }
-        
-        if let currentType = currentType {
-            groupedWeather.append(GroupedWeather(type: currentType, items: currentItems))
-        }
-        
-        print("Grouped Weather: \(groupedWeather)")
-        
-        return groupedWeather
-    }
-
-    
+    }    
 }
 

@@ -24,17 +24,18 @@
         }
       }
     },
-    "Delivery fee maybe increased" : {
+    "Get optimal delivery fee tomorrow" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Biaya pengantaran kemungkinan naik"
+            "value" : "Dapetin ongkir yang lebih murah besok"
           }
         }
       }
     },
     "Hello, World!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -54,27 +55,48 @@
         }
       }
     },
-    "optimal delivery fee start from %@" : {
+    "No increasing delivery fee for today" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Biaya pengantaran optimal dimulai pukul %@"
+            "value" : "Tidak ada kenaikan ongkir hari ini"
           }
         }
       }
     },
-    "optimal delivery fee start from tomorrow" : {
+    "Optimal delivery fee start at  %@" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Biaya pengantaran optimal dimulai besok"
+            "value" : "Ongkir optimal mulai jam %@"
+          }
+        }
+      }
+    },
+    "Optimal delivery fee starts tomorrow at %@" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongkir optimal mulai besok jam %@"
+          }
+        }
+      }
+    },
+    "Optimal delivery fee until  %@" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongkir optimal sampai jam %@"
           }
         }
       }
     },
     "Optimal delivery times:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -85,11 +107,32 @@
       }
     },
     "or %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "atau %@"
+          }
+        }
+      }
+    },
+    "Order later to avoid increased fare" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunda order buat dapet ongkir lebih murah"
+          }
+        }
+      }
+    },
+    "Order now for optimal delivery fee" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Order sekarang biar dapet ongkir optimal"
           }
         }
       }
@@ -104,7 +147,18 @@
         }
       }
     },
+    "Place order anytime you want" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Order kapan aja yang kamu mau"
+          }
+        }
+      }
+    },
     "to %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -114,15 +168,8 @@
         }
       }
     },
-    "until %@" : {
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sampai %@"
-          }
-        }
-      }
+    "Undefined" : {
+
     },
     "We haven't found the optimal time yet" : {
       "localizations" : {
@@ -130,16 +177,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Waktu optimal belum ditemukan"
-          }
-        }
-      }
-    },
-    "You can get optimal delivery time now" : {
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sekarang adalah waktu yang optimal untuk pengantaran"
           }
         }
       }
