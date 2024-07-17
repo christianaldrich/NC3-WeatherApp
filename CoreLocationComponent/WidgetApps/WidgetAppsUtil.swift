@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 enum currentWeatherWidgetUtil: Int, Codable, Hashable, Identifiable{
@@ -19,14 +20,14 @@ enum currentWeatherWidgetUtil: Int, Codable, Hashable, Identifiable{
         }
     }
     
-    var copyWritingFeeDelivery : String {
+    var copyWritingFeeDelivery : LocalizedStringKey {
         switch self{
         case .safe : return "Optimal delivery fee"
         case .risk : return "Increased delivery fee"
         }
     }
     
-    var copyWritingOrdering : String {
+    var copyWritingOrdering : LocalizedStringKey {
         switch self{
         case .safe : return "Order Now"
         case .risk : return "Order Later"
@@ -34,10 +35,10 @@ enum currentWeatherWidgetUtil: Int, Codable, Hashable, Identifiable{
     }
     
         
-    var statusCondition : String {
+    var statusCondition : LocalizedStringKey {
         switch self{
         case .risk : return "rain until"
-        case .safe : return "until"
+        case .safe : return "before"
         }
     }
     

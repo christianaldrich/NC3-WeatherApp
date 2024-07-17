@@ -23,10 +23,11 @@ struct HomeView: View {
             
             if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
                 VStack{
+                    Spacer()
                     if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
                     } else {
-                        VStack(spacing:54){
+                        VStack{
                             HStack(alignment: .top) {
                                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(viewModel.checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
@@ -43,9 +44,10 @@ struct HomeView: View {
                                     }
                                 }
                                 .foregroundStyle(.black)
+                                .padding(.bottom, 65)
                             
                             
-                            VStack{
+                            VStack(spacing: 10){
                                 if weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) {
                                     LottieView(animationName: "Clear 4")
                                         .frame(width: 279,height: 234)
@@ -66,9 +68,11 @@ struct HomeView: View {
                                     }
                             }
                         }
+                        .padding(.bottom, 65)
+                        
                         GraphView(viewModel: viewModel,
                                   groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
-                        .offset(y:70)
+                        .padding(.bottom, 16)
                     }
                 }
                 .padding()
@@ -111,3 +115,4 @@ struct HomeView: View {
         .ignoresSafeArea()
     }
 }
+

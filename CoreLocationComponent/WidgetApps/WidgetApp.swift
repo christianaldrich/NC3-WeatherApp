@@ -93,7 +93,11 @@ struct WidgetAppEntryView : View {
                         .bold()
                         .foregroundStyle(Color.white)
                     
-                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)).fontWeight(.regular).font(.system(size: 15))
+//                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)).fontWeight(.regular).font(.system(size: 15))
+//                        .foregroundStyle(Color.white)
+                    getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)
+                        .fontWeight(.regular)
+                        .font(.system(size: 15))
                         .foregroundStyle(Color.white)
                 }
             }
@@ -112,10 +116,14 @@ struct WidgetAppEntryView : View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.white)
-                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime))
-                        .fontWeight(.regular)
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.white)
+//                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime))
+//                        .fontWeight(.regular)
+//                        .font(.system(size: 12))
+//                        .foregroundStyle(Color.white)
+                    getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)
+                                           .fontWeight(.regular)
+                                           .font(.system(size: 12))
+                                           .foregroundStyle(Color.white)
                     // plot goes here
                     Spacer()
                     
@@ -146,7 +154,8 @@ struct WidgetAppEntryView : View {
         
         // Ubah string menjadi Date
         guard let startDate = inputFormatter.date(from: startDateString),
-              let endDate = inputFormatter.date(from: endDateString) else {
+              /*let endDate = inputFormatter.date(from: endDateString) else*/ 
+                let endDate = inputFormatter.date(from: endDateString)?.addingTimeInterval(1) else {
             fatalError("Invalid date format")
         }
         
@@ -154,16 +163,28 @@ struct WidgetAppEntryView : View {
         let startTimeString = outputFormatter.string(from: startDate)
         let endTimeString = outputFormatter.string(from: endDate)
         
+        
+        
         return (startTimeString, endTimeString)
     }
     
-    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
-            if weatherUtil == .safe {
-                return "\(weatherUtil.statusCondition) \(formattedTextofTime.1)"
-            } else {
-                return "\(weatherUtil.statusCondition) \(formattedTextofTime.0)"
-            }
+//    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
+//            if weatherUtil == .safe {
+//                return "\(weatherUtil.statusCondition) \(formattedTextofTime.1)"
+//            } else {
+//                return "\(weatherUtil.statusCondition) \(formattedTextofTime.0)"
+//            }
+//        }
+    
+    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> Text {
+        if weatherUtil == .safe {
+            return Text(weatherUtil.statusCondition) + Text(" ") + Text(formattedTextofTime.1)
+        } else {
+            return Text(weatherUtil.statusCondition) + Text(" ") + Text(formattedTextofTime.0)
         }
+    }
+
+    
 }
 
 struct WidgetApp: Widget {
