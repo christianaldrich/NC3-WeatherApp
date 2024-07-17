@@ -25,7 +25,16 @@ class WeatherManager: ObservableObject {
                     return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
                 }.value
                 if !safeWeather.isEmpty {
-                    safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+                    let calendar = Calendar.current
+                    if calendar.isDate(safeWeather[0].startTime, inSameDayAs: safeWeather[0].endTime){
+                        safeWeatherData = self.safeWeather[0].startTime.description + " - " + self.safeWeather[0].endTime.description
+                    } else {
+                        var endOfDay = calendar.startOfDay(for: Date())
+                        endOfDay = calendar.date(byAdding: .hour, value: 23, to: endOfDay)!
+                        endOfDay = calendar.date(byAdding: .minute, value: 59, to: endOfDay)!
+                        endOfDay = calendar.date(byAdding: .second, value: 59, to: endOfDay)!
+                        safeWeatherData = self.safeWeather[0].startTime.description + " - " + endOfDay.description
+                    }
                 }else {
                     safeWeatherData = "All rain for today"
                 }
