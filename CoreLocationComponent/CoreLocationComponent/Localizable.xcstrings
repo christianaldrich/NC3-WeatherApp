@@ -160,17 +160,6 @@
         }
       }
     },
-    "to %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- %@"
-          }
-        }
-      }
-    },
     "Undefined" : {
       "localizations" : {
         "id" : {
