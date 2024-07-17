@@ -11,11 +11,12 @@ import SwiftUI
 
 @MainActor
 class WeatherManager: ObservableObject {
-    
-    static var shared = WeatherManager()
-    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) var safeWeatherData = " "
-    
     @Published var weather: Weather?
+    static var shared = WeatherManager()
+    
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) var safeWeatherData = " "
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) var isClearWeather : Bool = true
+    
     
     func getWeather(latitude: Double, longitude: Double) {
         Task.init{
@@ -28,6 +29,22 @@ class WeatherManager: ObservableObject {
                 }else {
                     safeWeatherData = "All rain for today"
                 }
+            
+                
+                if let currentWeather = self.currentWeather {
+                    isClearWeather = checkWeather(weather: currentWeather)
+                    print("Check => \(currentWeather)")
+                    print("isClearWeather : \(isClearWeather)")
+                    print("isClearWeather : \(isClearWeather)")
+                    print("isClearWeatherOnWidget : \(DataService().currentWeather())")
+                    print("func checkWeather : \(checkWeather(weather: currentWeather))")
+                } else {
+                    isClearWeather = false
+//                    print("Check => \(currentWeather)")
+//                    print("isClearWeather : \(isClearWeather)")
+//                    print("func checkWeather : \(checkWeather(weather: currentWeather!))")
+                }
+                
             } catch {
                 fatalError("\(error)")
             }
@@ -35,32 +52,32 @@ class WeatherManager: ObservableObject {
     }
     
     var todayWeather: [HourWeather] {
-            let currentDate = Date()
-            let calendar = Calendar.current
-            
-            let startOfToday = calendar.startOfDay(for: currentDate)
-            let endOfNextDay = calendar.date(byAdding: .day, value: 1, to: startOfToday)!
-            
-            let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > currentDate && $0.date < endOfNextDay }
+        let currentDate = Date()
+        let calendar = Calendar.current
         
-            if let currentWeather = self.currentWeather {
-                return [currentWeather] + (hourWeather!)
-           }
-            
-            return hourWeather ?? []
+        let startOfToday = calendar.startOfDay(for: currentDate)
+        let endOfNextDay = calendar.date(byAdding: .day, value: 1, to: startOfToday)!
+        
+        let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date > currentDate && $0.date < endOfNextDay }
+        
+        if let currentWeather = self.currentWeather {
+            return [currentWeather] + (hourWeather!)
         }
+        
+        return hourWeather ?? []
+    }
     
     var tomorrowWeather: [HourWeather] {
-            let calendar = Calendar.current
-            guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) else { return [] }
-            
-            let startDay = calendar.startOfDay(for: tomorrow)
-            let endDay = calendar.date(byAdding: .day, value: 1, to: startDay)!
-            
-            let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date >= startDay && $0.date < endDay }
-            
-            return hourWeather ?? []
-        }
+        let calendar = Calendar.current
+        guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) else { return [] }
+        
+        let startDay = calendar.startOfDay(for: tomorrow)
+        let endDay = calendar.date(byAdding: .day, value: 1, to: startDay)!
+        
+        let hourWeather = weather?.hourlyForecast.forecast.filter { $0.date >= startDay && $0.date < endDay }
+        
+        return hourWeather ?? []
+    }
     
     var allWeather: [HourWeather] {
         let todayWeather = self.todayWeather
@@ -74,9 +91,9 @@ class WeatherManager: ObservableObject {
         
         let thisHour = calendar.date(byAdding: .hour, value: -1, to: currentDate)
         let currentWeather = weather?.hourlyForecast.forecast.first { $0.date > thisHour ?? Date() && $0.date < calendar.date(byAdding: .hour, value: 1, to: thisHour ?? Date())! }
-            
-            return currentWeather
-        }
+        
+        return currentWeather
+    }
     
     var safeWeather: [TimeRange] {
         let calendar = Calendar.current
@@ -101,9 +118,12 @@ class WeatherManager: ObservableObject {
         }
         if startDate != Date.distantPast {
             let adjustedEndDate = todayWeather.last?.date ?? Date()
-               let lastMomentOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: adjustedEndDate) ?? Date()
-               timeRange.append(TimeRange(startTime: startDate, endTime: lastMomentOfDay))
+            let lastMomentOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: adjustedEndDate) ?? Date()
+            timeRange.append(TimeRange(startTime: startDate, endTime: lastMomentOfDay))
         }
+        
+        
+        
         return timeRange
     }
     
@@ -111,12 +131,12 @@ class WeatherManager: ObservableObject {
         
         switch weather.condition{
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
-                return false
-            default:
-                return true
+            return false
+        default:
+            return true
         }
         
         
-    }    
+    }
 }
 

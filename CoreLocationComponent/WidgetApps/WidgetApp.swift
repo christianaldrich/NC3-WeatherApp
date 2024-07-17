@@ -12,12 +12,11 @@ struct Provider: TimelineProvider {
     let data = DataService()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .safe)
-        
+        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .safe)
+        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
         
         completion(entry)
     }
@@ -27,18 +26,18 @@ struct Provider: TimelineProvider {
         var entries: [SimpleEntry] = []
         let currentDate = Date()
         let calendar = Calendar.current
-        let startOfHour = calendar.date(bySetting: .minute, value: 0, of: currentDate)!
-        let startOfCurrentHour = calendar.date(bySetting: .second, value: 0, of: startOfHour)!
+//        let startOfHour = calendar.date(bySetting: .minute, value: 0, of: currentDate)!
+//        let startOfCurrentHour = calendar.date(bySetting: .second, value: 0, of: startOfHour)!
 
         
         for hourOffset in 0 ..< 24 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: .safe)
+            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
             entries.append(entry)
         }
         
-//        let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
-        let nextUpdateDate = calendar.date(byAdding: .hour, value: 1, to: startOfCurrentHour)!
+        let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
+//        let nextUpdateDate = calendar.date(byAdding: .hour, value: 1, to: startOfCurrentHour)!
 
         let timeline = Timeline(entries: entries, policy: .after(nextUpdateDate))
         completion(timeline)
@@ -64,7 +63,7 @@ struct WidgetAppEntryView : View {
         
         let stringDate = self.entry.safeWeatherData
         let formattedTextofTime = dateFormatter(stringDate: stringDate)
-        let weatherUtil = entry.currentWeather
+        let weatherUtil = self.entry.currentWeather
         
         switch widgetFamily{
         case .systemSmall:

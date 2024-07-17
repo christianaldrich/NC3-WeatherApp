@@ -7,4 +7,4 @@
 
 import Foundation
 
-let packageIdentifier: String = "group.com.pang.CoreLocationComponent"
+let packageIdentifier: String = "group.com.rey.CoreLocationComponent"

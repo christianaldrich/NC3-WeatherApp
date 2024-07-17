@@ -9,11 +9,16 @@ import Foundation
 import SwiftUI
 
 struct DataService{
-    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) private var safeWeatherData = " "
-    @AppStorage ("currentWeather", store: UserDefaults(suiteName: "group.com.rey.CoreLocationComponent")) private var currentWeatherData : currentWeatherWidgetUtil = .risk
-//
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) private var safeWeatherData = " "
+    @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) private var isClearWeather : Bool = true
+
     func currentWeather () -> currentWeatherWidgetUtil {
-        return currentWeatherData
+        switch self.isClearWeather {
+        case false:
+            return .risk
+        case true:
+            return .safe
+        }
     }
     
     func weatherData ()-> String{
