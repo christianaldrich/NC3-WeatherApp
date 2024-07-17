@@ -17,6 +17,8 @@
 		0D89B9712C46A55D00DED358 /* GroupWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9702C46A55D00DED358 /* GroupWeatherView.swift */; };
 		0D89B9762C46AAD700DED358 /* PackageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9752C46AAD700DED358 /* PackageConstant.swift */; };
 		0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9752C46AAD700DED358 /* PackageConstant.swift */; };
+		0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9852C476DEB00DED358 /* Rain 4.json */; };
+		0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9862C476DEC00DED358 /* Clear 4.json */; };
 		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */; };
 		63561DA92C47732A00D048C9 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 63561DA72C47732A00D048C9 /* Rain 4.json */; };
@@ -80,6 +82,8 @@
 		0D89B96D2C4675C200DED358 /* DescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionModel.swift; sourceTree = "<group>"; };
 		0D89B9702C46A55D00DED358 /* GroupWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupWeatherView.swift; sourceTree = "<group>"; };
 		0D89B9752C46AAD700DED358 /* PackageConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageConstant.swift; sourceTree = "<group>"; };
+		0D89B9852C476DEB00DED358 /* Rain 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Rain 4.json"; sourceTree = "<group>"; };
+		0D89B9862C476DEC00DED358 /* Clear 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Clear 4.json"; sourceTree = "<group>"; };
 		631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		63561DA72C47732A00D048C9 /* Rain 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Rain 4.json"; sourceTree = "<group>"; };
@@ -155,7 +159,6 @@
 			children = (
 				0D8729132C3E43930077C46C /* Manager */,
 				0D89B9672C462EA700DED358 /* HomeViewModel.swift */,
-				BA08B6B92C46C6D700FDC291 /* LottieViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,8 +193,8 @@
 		0D89B9742C46AAB300DED358 /* AssetLottie */ = {
 			isa = PBXGroup;
 			children = (
-				63561DA82C47732A00D048C9 /* Clear 4.json */,
-				63561DA72C47732A00D048C9 /* Rain 4.json */,
+				0D89B9862C476DEC00DED358 /* Clear 4.json */,
+				0D89B9852C476DEB00DED358 /* Rain 4.json */,
 			);
 			path = AssetLottie;
 			sourceTree = "<group>";
@@ -385,8 +388,8 @@
 				63561DAC2C47734800D048C9 /* InfoPlist.xcstrings in Resources */,
 				BA029B602C3E3952002ECCDB /* Preview Assets.xcassets in Resources */,
 				BA029B5D2C3E3952002ECCDB /* Assets.xcassets in Resources */,
-				63561DA92C47732A00D048C9 /* Rain 4.json in Resources */,
-				63561DAA2C47732A00D048C9 /* Clear 4.json in Resources */,
+				0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */,
+				0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */,
 				631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,7 +426,6 @@
 				0D8729152C3E43A60077C46C /* WeatherManager.swift in Sources */,
 				631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */,
 				0D89B96C2C46473300DED358 /* GraphItemView.swift in Sources */,
-				BA08B6BA2C46C6D700FDC291 /* LottieViewModel.swift in Sources */,
 				BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */,
 				63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */,
 				0D87291B2C3FB6020077C46C /* Time.swift in Sources */,
