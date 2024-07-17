@@ -12,8 +12,14 @@ struct LottieView: UIViewRepresentable {
     let animationView = AnimationView()
 
     var animationName: String
+    
+    
 
     func makeUIView(context: Context) -> UIView {
+        
+        let width : CGFloat = 279
+        let height : CGFloat = 234
+        
         let view = UIView()
         animationView.animation = Animation.named(animationName)
         animationView.contentMode = .scaleAspectFit
@@ -23,8 +29,10 @@ struct LottieView: UIViewRepresentable {
         view.addSubview(animationView)
         
         NSLayoutConstraint.activate([
-            animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: width),
+            animationView.heightAnchor.constraint(equalToConstant: height),
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
         return view
@@ -38,9 +46,9 @@ struct LottieView: UIViewRepresentable {
 }
 
 #Preview{
-    LottieView(animationName: "Clear")
+    LottieView(animationName: "Clear 3")
 }
 
 #Preview{
-    LottieView(animationName: "Rain")
+    LottieView(animationName: "Rain 3")
 }
