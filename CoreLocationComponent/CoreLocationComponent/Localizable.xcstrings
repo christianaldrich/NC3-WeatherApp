@@ -4,16 +4,6 @@
     "" : {
 
     },
-    "-name apps-" : {
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-name apps-"
-          }
-        }
-      }
-    },
     "%@" : {
       "localizations" : {
         "id" : {
@@ -24,63 +14,52 @@
         }
       }
     },
-    "%@ %@" : {
+    "before" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ %2$@"
+            "value" : "sebelum"
           }
         }
       }
     },
-    "Chance" : {
-      "extractionState" : "stale",
+    "Delivery fee won't go up today" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kemungkinan"
+            "value" : "Ongkir ga bakal mahal hari ini"
           }
         }
       }
     },
-    "Get optimal delivery fee tomorrow" : {
+    "Delivery fees might go up today" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dapetin ongkir yang lebih murah besok"
+            "value" : "Ongkir lagi mahal hari ini"
           }
         }
       }
     },
-    "Help you to know the best time for ordering food" : {
+    "Increased delivery fee" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bantu kamu tahu waktu optimal untuk pesan makanan"
+            "value" : "Ongkir lagi mahal"
           }
         }
       }
     },
-    "Help you to know the best time for ordering food" : {
-
-    },
-    "Hour" : {
-      "extractionState" : "stale",
+    "It's rainy, delivery fees might go up" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jam"
+            "value" : "Lagi ujan nih, ongkir lagi mahal"
           }
         }
       }
@@ -95,76 +74,92 @@
         }
       }
     },
-    "Optimal delivery fee start at  %@" : {
+    "Optimal delivery fee" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ongkir optimal mulai jam %@"
+            "value" : "Waktunya ongkir hemat"
           }
         }
       }
     },
-    "Optimal delivery fee starts tomorrow at %@" : {
+    "Order Later" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ongkir optimal mulai besok jam %@"
+            "value" : "Tunda Dulu"
           }
         }
       }
     },
-    "Optimal delivery fee until  %@" : {
+    "Order Now" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ongkir optimal sampai jam %@"
+            "value" : "Yuk! Pesan"
           }
         }
       }
     },
-    "Order later to avoid increased fare" : {
+    "Order now and save on delivery" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tunda order buat dapet ongkir lebih murah"
-          }
-        }
-      }
-    },
-    "Order now for optimal delivery fee" : {
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Order sekarang biar dapet ongkir optimal"
-          }
-        }
-      }
-    },
-    "Perimission not granted" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Izin tidak diberikan"
+            "value" : "Pesan sekarang biar hemat ongkir"
           }
         }
       }
     },
     "Perimission not granted! Please update App Location permission." : {
-
-    },
-    "Place order anytime you want" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Order kapan aja yang kamu mau"
+            "value" : "Izin tidak diberikan! Mohon periksa kembali izin lokasi."
+          }
+        }
+      }
+    },
+    "rain until" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sampai"
+          }
+        }
+      }
+    },
+    "Save on delivery fee before  %@" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemat ongkir sebelum jam %@"
+          }
+        }
+      }
+    },
+    "Save on delivery fee starts at  %@" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemat ongkir mulai jam %@ hari ini"
+          }
+        }
+      }
+    },
+    "Save on delivery fee starts at %@ tomorrow" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemat ongkir mulai besok jam %@"
           }
         }
       }
@@ -174,7 +169,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Belum ditemukan"
+            "value" : "Tidak ditemukan"
           }
         }
       }
@@ -188,9 +183,6 @@
           }
         }
       }
-    },
-    "Weathery" : {
-
     }
   },
   "version" : "1.0"

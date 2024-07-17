@@ -27,7 +27,7 @@ struct HomeView: View {
                     if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
                     } else {
-                        VStack(spacing:54){
+                        VStack{
                             HStack(alignment: .top) {
                                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(viewModel.checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
@@ -69,6 +69,7 @@ struct HomeView: View {
                             }
                         }
                         .padding(.bottom, 65)
+                        
                         GraphView(viewModel: viewModel,
                                   groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
                         .padding(.bottom, 16)

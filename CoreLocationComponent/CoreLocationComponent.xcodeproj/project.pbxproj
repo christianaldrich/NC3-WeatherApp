@@ -20,20 +20,15 @@
 		0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9852C476DEB00DED358 /* Rain 4.json */; };
 		0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9862C476DEC00DED358 /* Clear 4.json */; };
 		0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
-		0D89B98A2C47BF1800DED358 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
-		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */; };
-		63561DA92C47732A00D048C9 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 63561DA72C47732A00D048C9 /* Rain 4.json */; };
-		63561DAA2C47732A00D048C9 /* Clear 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 63561DA82C47732A00D048C9 /* Clear 4.json */; };
+		6349A2CB2C480F900004BD55 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6349A2CA2C480F900004BD55 /* Localizable.xcstrings */; };
 		63561DAC2C47734800D048C9 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 63561DAB2C47734800D048C9 /* InfoPlist.xcstrings */; };
-		63561DAD2C47736200D048C9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7A73F2C44C65200BB9808 /* LottieView.swift */; };
 		63D7A7432C44C6A300BB9808 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 63D7A7422C44C6A300BB9808 /* Lottie */; };
 		AC4BA63B2C4500B1009FF334 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4BA63A2C4500B0009FF334 /* WidgetKit.framework */; };
 		AC4BA63D2C4500B1009FF334 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4BA63C2C4500B1009FF334 /* SwiftUI.framework */; };
 		AC4BA6402C4500B1009FF334 /* WidgetAppsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA63F2C4500B1009FF334 /* WidgetAppsBundle.swift */; };
 		AC4BA6422C4500B1009FF334 /* WidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6412C4500B1009FF334 /* WidgetApp.swift */; };
-		AC4BA6442C4500B2009FF334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
 		AC4BA6482C4500B2009FF334 /* WidgetAppsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6502C4501D5009FF334 /* DataService.swift */; };
 		ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
@@ -43,7 +38,6 @@
 		BA029B5D2C3E3952002ECCDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
 		BA029B602C3E3952002ECCDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5F2C3E3952002ECCDB /* Preview Assets.xcassets */; };
 		BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B662C3E396D002ECCDB /* LocationManager.swift */; };
-		BA08B6BA2C46C6D700FDC291 /* LottieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08B6B92C46C6D700FDC291 /* LottieViewModel.swift */; };
 		BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,10 +78,8 @@
 		0D89B9752C46AAD700DED358 /* PackageConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageConstant.swift; sourceTree = "<group>"; };
 		0D89B9852C476DEB00DED358 /* Rain 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Rain 4.json"; sourceTree = "<group>"; };
 		0D89B9862C476DEC00DED358 /* Clear 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Clear 4.json"; sourceTree = "<group>"; };
-		631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
-		63561DA72C47732A00D048C9 /* Rain 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Rain 4.json"; sourceTree = "<group>"; };
-		63561DA82C47732A00D048C9 /* Clear 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Clear 4.json"; sourceTree = "<group>"; };
+		6349A2CA2C480F900004BD55 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		63561DAB2C47734800D048C9 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		63D7A73F2C44C65200BB9808 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetAppsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +100,6 @@
 		BA029B662C3E396D002ECCDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BA029B682C3E3998002ECCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA029B6A2C3E9C1E002ECCDB /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = System/Library/Frameworks/WeatherKit.framework; sourceTree = SDKROOT; };
-		BA08B6B92C46C6D700FDC291 /* LottieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewModel.swift; sourceTree = "<group>"; };
 		BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,8 +237,8 @@
 				0D89B9662C462E2B00DED358 /* ViewModel */,
 				BAE9DA292C3ECBDF00965DAA /* View */,
 				0D8729192C3E45C40077C46C /* CoreLocationComponent.entitlements */,
-				631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */,
 				63561DAB2C47734800D048C9 /* InfoPlist.xcstrings */,
+				6349A2CA2C480F900004BD55 /* Localizable.xcstrings */,
 				0D8729162C3E43E30077C46C /* Model */,
 				BA029B682C3E3998002ECCDB /* Info.plist */,
 				BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */,
@@ -375,7 +366,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */,
-				63561DAD2C47736200D048C9 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,10 +375,10 @@
 			files = (
 				63561DAC2C47734800D048C9 /* InfoPlist.xcstrings in Resources */,
 				BA029B602C3E3952002ECCDB /* Preview Assets.xcassets in Resources */,
+				6349A2CB2C480F900004BD55 /* Localizable.xcstrings in Resources */,
 				BA029B5D2C3E3952002ECCDB /* Assets.xcassets in Resources */,
 				0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */,
 				0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */,
-				631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

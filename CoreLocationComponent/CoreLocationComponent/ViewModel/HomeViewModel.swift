@@ -54,6 +54,12 @@ class HomeViewModel: ObservableObject {
         let startOfToday = calendar.startOfDay(for: currentTime)
         let startOf2Day = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 2, to: currentTime)!)
         
+//        print(startOfTomorrow)
+//        print(startOfToday)
+//        print(startOf2Day)
+//        print(currentTime)
+        
+        
         var desc: LocalizedStringKey = ""
         var timeDesc: LocalizedStringKey = ""
 
@@ -62,21 +68,23 @@ class HomeViewModel: ObservableObject {
             
             let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
 
-            if adjustedEndTime >= calendar.startOfDay(for: startOf2Day) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
-                desc = LocalizedStringKey("Place order anytime you want")
+//            print(timeRange)
+            
+            if adjustedEndTime >= calendar.startOfDay(for: startOfTomorrow) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
+                desc = LocalizedStringKey("Delivery fee won't go up today")
                 timeDesc = LocalizedStringKey("No increasing delivery fee for today")
                 
             }else if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime {
-                desc = LocalizedStringKey("Order now for optimal delivery fee")
-                timeDesc = LocalizedStringKey("Optimal delivery fee until  \(timeFormatter.string(from: adjustedEndTime))")
+                desc = LocalizedStringKey("Order now and save on delivery")
+                timeDesc = LocalizedStringKey("Save on delivery fee before  \(timeFormatter.string(from: adjustedEndTime))")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
-                desc = LocalizedStringKey("Get optimal delivery fee tomorrow")
-                timeDesc = LocalizedStringKey("Optimal delivery fee starts tomorrow at \(timeFormatter.string(from: timeRange.startTime))")
+                desc = LocalizedStringKey("Delivery fees might go up today")
+                timeDesc = LocalizedStringKey("Save on delivery fee starts at \(timeFormatter.string(from: timeRange.startTime)) tomorrow")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
-                desc = LocalizedStringKey("Order later to avoid increased fare")
-                timeDesc = LocalizedStringKey("Optimal delivery fee start at  \(timeFormatter.string(from: timeRange.startTime))")
+                desc = LocalizedStringKey("It's rainy, delivery fees might go up")
+                timeDesc = LocalizedStringKey("Save on delivery fee starts at  \(timeFormatter.string(from: timeRange.startTime))")
                 
             }
             else {
