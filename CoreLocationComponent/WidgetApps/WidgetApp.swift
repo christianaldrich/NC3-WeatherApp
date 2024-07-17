@@ -73,15 +73,16 @@ struct WidgetAppEntryView : View {
         switch widgetFamily{
         case .systemSmall:
             ZStack{
+                Color.init("Background")
                 VStack{
-                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.blue : Color.gray)
+                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.roundedBackground : Color.roundedColorRain)
                         .frame(width: 158, height: 79)
                         .offset(y: 45)
                 }
                 VStack(alignment:.leading){
                     Image(systemName: weatherUtil.imageSystemName)
                         .font(.system(size: 30))
-                        .foregroundStyle(weatherUtil == .safe ? Color.orange : Color.gray)
+                        .foregroundStyle(weatherUtil == .safe ? Color.orange : Color.roundedColorRain)
                         .padding(.bottom, 7)
                     
                     Text(weatherUtil.copyWritingFeeDelivery).fontWeight(.regular).font(.system(size: 11)).padding(.bottom, 5)
@@ -100,7 +101,7 @@ struct WidgetAppEntryView : View {
         default:
             ZStack{
                 VStack{
-                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.blue : Color.gray)
+                    Rectangle().foregroundStyle(weatherUtil == .safe ? Color.roundedBackground : Color.roundedColorRain)
                         .frame(width: 338, height: 59)
                         .offset(y: -50)
                 }
