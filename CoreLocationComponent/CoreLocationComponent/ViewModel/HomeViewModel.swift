@@ -29,7 +29,6 @@ class HomeViewModel: ObservableObject {
                formatter.dateFormat = "ha"
                
            }
-           
            return formatter
        }()
     
@@ -41,12 +40,7 @@ class HomeViewModel: ObservableObject {
             if safeWeather.contains(where: { $0.startTime <= weather.date && $0.endTime >= weather.date }) {
                 state = .safe
             } else {
-                if weather.condition == .drizzle {
-                    state = .drizzle
-                }
-                else {
-                    state = .unsafe
-                }
+                state = .unsafe
             }
             graphModels.append(GraphModel(value: weather, weatherState: state))
         }
@@ -131,5 +125,15 @@ class HomeViewModel: ObservableObject {
         } else {
             return true
         }
+    }
+}
+
+func is24HourFormat() -> Bool {
+    let locale = Locale.current
+    let dateFormatter = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale)
+    if dateFormatter?.contains("a") == true {
+        return false
+    } else {
+        return true
     }
 }

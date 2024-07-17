@@ -19,10 +19,6 @@ struct DescriptionView: View {
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 357)
-            
-//            Text(descriptionModel.timeDescription)
-//                .font(.body)
-//                .fontWeight(.regular)
         }
     }
 }
