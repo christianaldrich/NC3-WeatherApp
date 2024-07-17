@@ -34,6 +34,7 @@
 		AC4BA6422C4500B1009FF334 /* WidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6412C4500B1009FF334 /* WidgetApp.swift */; };
 		AC4BA6482C4500B2009FF334 /* WidgetAppsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6502C4501D5009FF334 /* DataService.swift */; };
+		AC7E0FDB2C48895200F42CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
 		ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		ACB43ACF2C4649B70024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */; };
@@ -369,7 +370,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6349A2CC2C4811520004BD55 /* Localizable.xcstrings in Resources */,
-				0D89B98C2C488E4C00DED358 /* Assets.xcassets in Resources */,
 				0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,7 +446,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -458,7 +458,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rey.CoreLocationComponent.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -476,7 +476,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -488,7 +488,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rey.CoreLocationComponent.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -627,7 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -644,7 +644,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rey.CoreLocationComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -664,7 +664,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = PS54KA4A89;
+				DEVELOPMENT_TEAM = 7LQUVUGHA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -681,7 +681,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rey.CoreLocationComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
