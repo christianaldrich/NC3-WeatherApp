@@ -4,12 +4,38 @@
     "" : {
 
     },
+    "-name apps-" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-name apps-"
+          }
+        }
+      }
+    },
     "%@" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
           }
         }
       }
@@ -35,13 +61,12 @@
         }
       }
     },
-    "Hello, World!" : {
-      "extractionState" : "stale",
+    "Help you to know the best time for ordering food" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Halo, Dunia!"
+            "value" : "Bantu kamu tahu waktu optimal untuk pesan makanan"
           }
         }
       }
@@ -100,28 +125,6 @@
         }
       }
     },
-    "Optimal delivery times:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waktu Pemesanan Optimal"
-          }
-        }
-      }
-    },
-    "or %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "atau %@"
-          }
-        }
-      }
-    },
     "Order later to avoid increased fare" : {
       "localizations" : {
         "id" : {
@@ -166,19 +169,15 @@
         }
       }
     },
-    "to %@" : {
-      "extractionState" : "stale",
+    "Undefined" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- %@"
+            "value" : "Belum ditemukan"
           }
         }
       }
-    },
-    "Undefined" : {
-
     },
     "We haven't found the optimal time yet" : {
       "localizations" : {
