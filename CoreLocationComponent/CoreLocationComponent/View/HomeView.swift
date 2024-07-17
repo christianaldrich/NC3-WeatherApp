@@ -24,8 +24,6 @@ struct HomeView: View {
             if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
                 VStack{
                     
-//                    Spacer()
-                    
                     VStack(spacing:54){
                         if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
@@ -49,8 +47,13 @@ struct HomeView: View {
                             
                             
                             VStack{
-                                LottieView(animationName: LottieViewModel().showLottie(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather))
-                                    .frame(width: 279,height: 234)
+                                if weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) {
+                                    LottieView(animationName: "Clear 4")
+                                        .frame(width: 279,height: 234)
+                                }else {
+                                    LottieView(animationName: "Rain 4")
+                                        .frame(width: 279,height: 234)
+                                }
 
                                 DescriptionView(descriptionModel: $descr)
                                     .foregroundStyle(Color("descText"))
@@ -65,13 +68,9 @@ struct HomeView: View {
                             }
                         }
                     }
-                    
-//                    Spacer()
-                    
                     GraphView(viewModel: viewModel,
                               groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
                     .offset(y:70)
-//                    Spacer()
                 }
                 .padding()
                 .task {
