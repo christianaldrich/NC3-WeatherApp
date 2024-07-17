@@ -46,6 +46,9 @@
         }
       }
     },
+    "Help you to know the best time for ordering food" : {
+
+    },
     "Hour" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -186,6 +189,9 @@
           }
         }
       }
+    },
+    "Weathery" : {
+
     }
   },
   "version" : "1.0"
