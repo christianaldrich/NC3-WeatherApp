@@ -5,8 +5,12 @@
 	<key>com.apple.developer.weatherkit</key>
 	<true/>
 	<key>com.apple.security.application-groups</key>
+<<<<<<< HEAD
 	<array>
 		<string>group.com.pang.CoreLocationComponent2</string>
 	</array>
+=======
+	<array/>
+>>>>>>> main
 </dict>
 </plist>

@@ -19,13 +19,14 @@ struct HomeView: View {
     var body: some View {
         
         ZStack{
-            Color.init(red: 242/255.0, green: 242/255.0, blue: 247/255.0)
+            Color.init("Background")
             
             if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
                 VStack{
-                    Spacer()
                     
-                    VStack(spacing:32){
+//                    Spacer()
+                    
+                    VStack(spacing:54){
                         if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
                         } else {
@@ -33,35 +34,44 @@ struct HomeView: View {
                                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(viewModel.checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(width: 63, height: 61)
+                                            .frame(width: 53, height: 51)
                                             .foregroundStyle(weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) ? .orange : .gray)
                                     VStack(alignment: .leading){
                                         Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
                                             .font(.title)
                                             .bold()
+                                            .foregroundStyle(Color("descText"))
                                         Text("\(locationManager.cityName)")
+                                            .foregroundStyle(Color("descText"))
                                     }
                                 }
                                 .foregroundStyle(.black)
+                            
+                            
+                            VStack{
+                                LottieView(animationName: LottieViewModel().showLottie(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather))
+                                    .frame(width: 279,height: 234)
 
-                            DescriptionView(descriptionModel: $descr)
-                                .foregroundStyle(.black)
-                                .onAppear {
-                                    viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
-                                    descr = viewModel.description
-                                }
-                                .onChange(of: weatherKitManager.safeWeather) {
-                                    viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
-                                    descr = viewModel.description
-                                }
+                                DescriptionView(descriptionModel: $descr)
+                                    .foregroundStyle(Color("descText"))
+                                    .onAppear {
+                                        viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
+                                        descr = viewModel.description
+                                    }
+                                    .onChange(of: weatherKitManager.safeWeather) {
+                                        viewModel.updateDescription(timeList: weatherKitManager.safeWeather)
+                                        descr = viewModel.description
+                                    }
+                            }
                         }
                     }
                     
-                    Spacer()
+//                    Spacer()
                     
                     GraphView(viewModel: viewModel,
-                              groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather))
-                    
+                              groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
+                    .offset(y:70)
+//                    Spacer()
                 }
                 .padding()
                 .task {
@@ -86,6 +96,7 @@ struct HomeView: View {
             } else {
                 Text("Perimission not granted")
             }
+            
         }
         .ignoresSafeArea()
     }

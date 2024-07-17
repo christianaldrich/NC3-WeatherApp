@@ -20,9 +20,9 @@ struct DescriptionView: View {
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 357)
             
-            Text(descriptionModel.timeDescription)
-                .font(.body)
-                .fontWeight(.regular)
+//            Text(descriptionModel.timeDescription)
+//                .font(.body)
+//                .fontWeight(.regular)
         }
     }
 }
