@@ -74,11 +74,20 @@ struct WidgetAppEntryView : View {
         case .systemSmall:
             ZStack{
                 Color.init("Background")
-                VStack{
+                ZStack{
                     Rectangle().foregroundStyle(weatherUtil == .safe ? Color.roundedBackground : Color.roundedColorRain)
                         .frame(width: 158, height: 79)
                         .offset(y: 45)
+                    
+                    Image(weatherUtil == .safe ? "Clear" : "Rainy")
+                        .resizable()
+                        .frame(width: weatherUtil == .safe ? 100 : 170, height: weatherUtil == .safe ? 79 : 90)
+                        .offset(x: weatherUtil == .safe ? 28 : 0, y: 39)
+
+
+
                 }
+                
                 VStack(alignment:.leading){
                     Image(systemName: weatherUtil.imageSystemName)
                         .font(.system(size: 30))
@@ -101,6 +110,10 @@ struct WidgetAppEntryView : View {
                         .foregroundStyle(Color.white)
                 }
             }
+            
+            
+            
+            
             
         default:
             ZStack{
