@@ -27,17 +27,17 @@
         }
       }
     },
-    "Delivery fee won't go up today" : {
+    "Enjoy standard delivery all day" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ongkir ga bakal mahal hari ini"
+            "value" : "Nikmati ongkir normal seharian"
           }
         }
       }
     },
-    "Delivery fees might go up today" : {
+    "Expect higher delivery fee today" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -48,7 +48,14 @@
       }
     },
     "Help you to know the best time for ordering food" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bantu kamu mengetahui waktu yang tepat untuk pesan makanan"
+          }
+        }
+      }
     },
     "Increased delivery fee" : {
       "localizations" : {
@@ -105,7 +112,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yuk! Pesan"
+            "value" : "Pesan Yuk!"
           }
         }
       }
@@ -135,7 +142,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "sampai"
+            "value" : "hujan sampai"
           }
         }
       }
