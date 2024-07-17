@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 @main
 struct CoreLocationComponentApp: App {
+    
+    init(){
+        WidgetCenter.shared.reloadTimelines(ofKind: "WidgetApp")
+    }
     @StateObject var weatherKitManager: WeatherManager = WeatherManager()
     @StateObject var locationManager: LocationManager = LocationManager()
     @StateObject var viewModel = HomeViewModel()
