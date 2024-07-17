@@ -4,12 +4,31 @@
     "" : {
 
     },
+    "-name apps-" : {
+
+    },
     "%@" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
           }
         }
       }
@@ -33,6 +52,9 @@
           }
         }
       }
+    },
+    "Help you to know the best time for ordering food" : {
+
     },
     "Hour" : {
       "localizations" : {
