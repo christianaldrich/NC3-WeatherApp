@@ -54,12 +54,6 @@ class HomeViewModel: ObservableObject {
         let startOfToday = calendar.startOfDay(for: currentTime)
         let startOf2Day = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 2, to: currentTime)!)
         
-//        print(startOfTomorrow)
-//        print(startOfToday)
-//        print(startOf2Day)
-//        print(currentTime)
-        
-        
         var desc: LocalizedStringKey = ""
         var timeDesc: LocalizedStringKey = ""
 
@@ -67,8 +61,6 @@ class HomeViewModel: ObservableObject {
             let timeRange = timeList[0]
             
             let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
-
-//            print(timeRange)
             
             if adjustedEndTime >= calendar.startOfDay(for: startOfTomorrow) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
                 desc = LocalizedStringKey("Enjoy standard delivery all day")

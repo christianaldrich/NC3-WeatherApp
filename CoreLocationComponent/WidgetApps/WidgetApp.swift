@@ -13,14 +13,10 @@ struct Provider: TimelineProvider {
     
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
-//        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .risk)
-        
-        
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
-//        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .risk)
         
         completion(entry)
     }
@@ -37,11 +33,9 @@ struct Provider: TimelineProvider {
         for hourOffset in 0 ..< 24 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
-//            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: .risk)
             entries.append(entry)
         }
         
-//        let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
         let nextUpdateDate = calendar.date(byAdding: .hour, value: 1, to: startOfCurrentHour)!
 
         let timeline = Timeline(entries: entries, policy: .after(nextUpdateDate))
@@ -83,9 +77,6 @@ struct WidgetAppEntryView : View {
                         .resizable()
                         .frame(width: weatherUtil == .safe ? 100 : 170, height: weatherUtil == .safe ? 79 : 90)
                         .offset(x: weatherUtil == .safe ? 28 : 0, y: 39)
-
-
-
                 }
                 
                 VStack(alignment:.leading){
@@ -102,8 +93,6 @@ struct WidgetAppEntryView : View {
                         .bold()
                         .foregroundStyle(Color.white)
                     
-//                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)).fontWeight(.regular).font(.system(size: 15))
-//                        .foregroundStyle(Color.white)
                     getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)
                         .fontWeight(.regular)
                         .font(.system(size: 15))
@@ -129,10 +118,6 @@ struct WidgetAppEntryView : View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.white)
-//                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime))
-//                        .fontWeight(.regular)
-//                        .font(.system(size: 12))
-//                        .foregroundStyle(Color.white)
                     getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)
                                            .fontWeight(.regular)
                                            .font(.system(size: 12))
@@ -167,7 +152,6 @@ struct WidgetAppEntryView : View {
         
         // Ubah string menjadi Date
         guard let startDate = inputFormatter.date(from: startDateString),
-              /*let endDate = inputFormatter.date(from: endDateString) else*/ 
                 let endDate = inputFormatter.date(from: endDateString)?.addingTimeInterval(1) else {
             fatalError("Invalid date format")
         }
@@ -180,14 +164,6 @@ struct WidgetAppEntryView : View {
         
         return (startTimeString, endTimeString)
     }
-    
-//    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
-//            if weatherUtil == .safe {
-//                return "\(weatherUtil.statusCondition) \(formattedTextofTime.1)"
-//            } else {
-//                return "\(weatherUtil.statusCondition) \(formattedTextofTime.0)"
-//            }
-//        }
     
     func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> Text {
         if weatherUtil == .safe {
