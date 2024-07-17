@@ -92,9 +92,6 @@ struct WidgetAppEntryView : View {
                         .bold()
                         .foregroundStyle(Color.white)
                     
-//                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)").fontWeight(.regular).font(.system(size: 15))
-//                        .foregroundStyle(Color.white)
-                    
                     Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime)).fontWeight(.regular).font(.system(size: 15))
                         .foregroundStyle(Color.white)
                 }
@@ -114,7 +111,7 @@ struct WidgetAppEntryView : View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.white)
-                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.0)")
+                    Text(getFormattedText(weatherUtil: weatherUtil, formattedTextofTime: formattedTextofTime))
                         .fontWeight(.regular)
                         .font(.system(size: 12))
                         .foregroundStyle(Color.white)
@@ -184,7 +181,6 @@ struct WidgetApp: Widget {
         }
         .configurationDisplayName("Weathery")
         .description("Help you to know the best time for ordering food")
-        //bisa ada 2
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
