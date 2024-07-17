@@ -71,7 +71,7 @@ class HomeViewModel: ObservableObject {
 //            print(timeRange)
             
             if adjustedEndTime >= calendar.startOfDay(for: startOfTomorrow) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
-                desc = LocalizedStringKey("Delivery fee won't go up today")
+                desc = LocalizedStringKey("Enjoy standard delivery all day")
                 timeDesc = LocalizedStringKey("No increasing delivery fee for today")
                 
             }else if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime {
@@ -79,7 +79,7 @@ class HomeViewModel: ObservableObject {
                 timeDesc = LocalizedStringKey("Save on delivery fee before  \(timeFormatter.string(from: adjustedEndTime))")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfTomorrow) {
-                desc = LocalizedStringKey("Delivery fees might go up today")
+                desc = LocalizedStringKey("Expect higher delivery fee today")
                 timeDesc = LocalizedStringKey("Save on delivery fee starts at \(timeFormatter.string(from: timeRange.startTime)) tomorrow")
                 
             } else if currentTime < timeRange.startTime && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
