@@ -16,8 +16,8 @@ struct GraphModel: Identifiable {
         switch self.weatherState{
             case .safe:
                 return .white
-            case .unsafe, .drizzle:
-                return .black
+            case .unsafe:
+            return .primary
         }
     }
     var graphWeatherSymbol: GraphWeatherSymbolModel {
@@ -31,8 +31,8 @@ struct GraphModel: Identifiable {
         switch self.weatherState {
         case .safe:
             weatherColor = Color.white
-        case .unsafe, .drizzle:
-            weatherColor = Color.gray
+        case .unsafe:
+            weatherColor = Color.rainSymbol
         }
         
         return GraphWeatherSymbolModel(
@@ -52,9 +52,6 @@ struct GraphModel: Identifiable {
         case .unsafe:
             symbol = "exclamationmark"
             symbolColor = .red
-        case .drizzle:
-            symbol = "exclamationmark"
-            symbolColor = .orange
         }
         
         return GraphDescriptionModel(
@@ -80,7 +77,6 @@ struct GraphDescriptionModel{
 enum GraphState {
     case safe
     case unsafe
-    case drizzle
 }
 
 struct GroupedWeather: Identifiable {

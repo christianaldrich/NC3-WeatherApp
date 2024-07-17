@@ -10,16 +10,6 @@ import Foundation
 import Charts
 import WeatherKit
 
-func is24HourFormat() -> Bool {
-    let locale = Locale.current
-    let dateFormatter = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale)
-    if dateFormatter?.contains("a") == true {
-        return false
-    } else {
-        return true
-    }
-}
-
 
 struct GraphView: View {
     

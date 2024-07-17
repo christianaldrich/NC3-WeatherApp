@@ -32,7 +32,7 @@ struct HomeView: View {
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 53, height: 51)
-                                            .foregroundStyle(weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) ? .orange : .gray)
+                                            .foregroundStyle(weatherKitManager.checkWeather(weather: weatherKitManager.currentWeather!) ? .orange : .rainSymbol)
                                     VStack(alignment: .leading){
                                         Text("\(weatherKitManager.currentWeather?.condition.description ?? "Nothing")")
                                             .font(.title)

@@ -31,7 +31,6 @@
 		AC4BA6442C4500B2009FF334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4BA6432C4500B2009FF334 /* Assets.xcassets */; };
 		AC4BA6482C4500B2009FF334 /* WidgetAppsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AC4BA6392C4500B0009FF334 /* WidgetAppsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC4BA6512C4501D5009FF334 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BA6502C4501D5009FF334 /* DataService.swift */; };
-		ACB43ACC2C463C2E0024D6F9 /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */; };
 		ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		ACB43ACF2C4649B70024D6F9 /* WidgetAppsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB43ACD2C46439E0024D6F9 /* WidgetAppsUtil.swift */; };
 		BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B582C3E3951002ECCDB /* CoreLocationComponentApp.swift */; };
@@ -40,7 +39,6 @@
 		BA029B602C3E3952002ECCDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5F2C3E3952002ECCDB /* Preview Assets.xcassets */; };
 		BA029B672C3E396D002ECCDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA029B662C3E396D002ECCDB /* LocationManager.swift */; };
 		BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */; };
-		BAE9DA2F2C3EE60800965DAA /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +100,6 @@
 		BA029B682C3E3998002ECCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA029B6A2C3E9C1E002ECCDB /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = System/Library/Frameworks/WeatherKit.framework; sourceTree = SDKROOT; };
 		BAE9DA2C2C3ECC0300965DAA /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
-		BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlottingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +269,6 @@
 			children = (
 				0D89B96F2C46A53400DED358 /* Graph */,
 				BA029B5A2C3E3951002ECCDB /* HomeView.swift */,
-				BAE9DA2E2C3EE60800965DAA /* PlottingView.swift */,
 				631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */,
 				63D7A73E2C44C64000BB9808 /* Lottie */,
 			);
@@ -392,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4BA6402C4500B1009FF334 /* WidgetAppsBundle.swift in Sources */,
-				ACB43ACC2C463C2E0024D6F9 /* PlottingView.swift in Sources */,
 				ACB43ACE2C46439E0024D6F9 /* WidgetAppsUtil.swift in Sources */,
 				AC4BA6422C4500B1009FF334 /* WidgetApp.swift in Sources */,
 				0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */,
@@ -408,7 +403,6 @@
 				BA029B5B2C3E3951002ECCDB /* HomeView.swift in Sources */,
 				0D89B9682C462EA700DED358 /* HomeViewModel.swift in Sources */,
 				0D89B96A2C463C3100DED358 /* GraphModel.swift in Sources */,
-				BAE9DA2F2C3EE60800965DAA /* PlottingView.swift in Sources */,
 				BA029B592C3E3951002ECCDB /* CoreLocationComponentApp.swift in Sources */,
 				0D89B9762C46AAD700DED358 /* PackageConstant.swift in Sources */,
 				BAE9DA2D2C3ECC0400965DAA /* GraphView.swift in Sources */,
