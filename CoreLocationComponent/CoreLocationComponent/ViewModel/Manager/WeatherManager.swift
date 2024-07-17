@@ -14,6 +14,7 @@ class WeatherManager: ObservableObject {
     
     static var shared = WeatherManager()
     @AppStorage("safeWeatherData", store: UserDefaults(suiteName: packageIdentifier)) var safeWeatherData = " "
+    @AppStorage ("currentWeather", store: UserDefaults(suiteName: packageIdentifier)) private var isWeatherClear = false
     
     @Published var weather: Weather?
     
@@ -28,6 +29,14 @@ class WeatherManager: ObservableObject {
                 }else {
                     safeWeatherData = "All rain for today"
                 }
+                
+                if let currentWeather = self.currentWeather{
+                    isWeatherClear = checkWeather(weather: currentWeather)
+                }else {
+                    isWeatherClear = false
+                }
+                
+                
             } catch {
                 fatalError("\(error)")
             }

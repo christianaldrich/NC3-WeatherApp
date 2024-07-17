@@ -442,7 +442,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -454,7 +454,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -472,7 +472,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetApps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetApps;
@@ -484,7 +484,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1.WidgetApps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent.WidgetApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -623,7 +623,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -639,7 +639,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -659,7 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreLocationComponent/Preview Content\"";
-				DEVELOPMENT_TEAM = CAPH2JRFFZ;
+				DEVELOPMENT_TEAM = PS54KA4A89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreLocationComponent/Info.plist;
@@ -675,7 +675,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pang.CoreLocationComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

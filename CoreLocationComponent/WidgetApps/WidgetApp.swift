@@ -12,12 +12,15 @@ struct Provider: TimelineProvider {
     let data = DataService()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .safe)
+        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
+//        SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .risk)
+        
         
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .safe)
+        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
+//        let entry = SimpleEntry(date: Date(), safeWeatherData: data.weatherData(), currentWeather: .risk)
         
         completion(entry)
     }
@@ -33,7 +36,8 @@ struct Provider: TimelineProvider {
         
         for hourOffset in 0 ..< 24 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: .safe)
+            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: data.currentWeather())
+//            let entry = SimpleEntry(date: entryDate, safeWeatherData: data.weatherData(), currentWeather: .risk)
             entries.append(entry)
         }
         
@@ -88,6 +92,9 @@ struct WidgetAppEntryView : View {
                         .bold()
                         .foregroundStyle(Color.white)
                     
+//                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)").fontWeight(.regular).font(.system(size: 15))
+//                        .foregroundStyle(Color.white)
+                    
                     Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)").fontWeight(.regular).font(.system(size: 15))
                         .foregroundStyle(Color.white)
                 }
@@ -107,7 +114,7 @@ struct WidgetAppEntryView : View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.white)
-                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.1)")
+                    Text("\(weatherUtil.statusCondition) \(formattedTextofTime.0)")
                         .fontWeight(.regular)
                         .font(.system(size: 12))
                         .foregroundStyle(Color.white)
@@ -151,6 +158,11 @@ struct WidgetAppEntryView : View {
         
         return (startTimeString, endTimeString)
     }
+    
+//    func getFormattedText(weatherUtil: currentWeatherWidgetUtil, formattedTextofTime: (String, String)) -> String {
+//
+//        
+//        }
 }
 
 struct WidgetApp: Widget {
@@ -167,7 +179,7 @@ struct WidgetApp: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("-name apps-")
+        .configurationDisplayName("Weathery")
         .description("Help you to know the best time for ordering food")
         //bisa ada 2
         .supportedFamilies([.systemSmall, .systemMedium])
