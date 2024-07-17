@@ -19,6 +19,7 @@
 		0D89B9782C46AC2E00DED358 /* PackageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B9752C46AAD700DED358 /* PackageConstant.swift */; };
 		0D89B9872C476DEC00DED358 /* Rain 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9852C476DEB00DED358 /* Rain 4.json */; };
 		0D89B9882C476DEC00DED358 /* Clear 4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D89B9862C476DEC00DED358 /* Clear 4.json */; };
+		0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA029B5C2C3E3952002ECCDB /* Assets.xcassets */; };
 		631D4E632C40BD47004C4FC9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631D4E622C40BD47004C4FC9 /* Localizable.xcstrings */; };
 		631D4EDE2C40E335004C4FC9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4EDD2C40E335004C4FC9 /* DescriptionView.swift */; };
 		63D7A7402C44C65200BB9808 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7A73F2C44C65200BB9808 /* LottieView.swift */; };
@@ -366,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D89B9892C47ADE400DED358 /* Assets.xcassets in Resources */,
 				AC4BA6442C4500B2009FF334 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

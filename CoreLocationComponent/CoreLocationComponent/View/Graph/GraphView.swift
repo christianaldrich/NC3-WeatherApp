@@ -50,7 +50,7 @@ struct GraphView: View {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 5)
                                                 .foregroundStyle(Color.blue.opacity(1))
-                                                .frame(height: 104)
+                                                .frame(height: 114)
                                             GroupWeatherView(viewModel: viewModel, weathers: group.items)
                                                 .padding()
                                         }
@@ -59,7 +59,7 @@ struct GraphView: View {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 0)
                                                 .foregroundStyle(Color("graphViewColor").opacity(0.5))
-                                                .frame(height: 104)
+                                                .frame(height: 114)
                                             GroupWeatherView(viewModel: viewModel, weathers: group.items)
                                         }
                                     }

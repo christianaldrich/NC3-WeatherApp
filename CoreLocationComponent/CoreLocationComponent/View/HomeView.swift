@@ -23,11 +23,10 @@ struct HomeView: View {
             
             if locationManager.locationManager?.authorizationStatus == .authorizedWhenInUse {
                 VStack{
-                    
-                    VStack(spacing:54){
-                        if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
+                    if weatherKitManager.todayWeather == [] || locationManager.cityName == "Somewhere" {
                             ProgressView()
-                        } else {
+                    } else {
+                        VStack(spacing:54){
                             HStack(alignment: .top) {
                                     Image(systemName: "\(weatherKitManager.currentWeather?.symbolName ?? "No Assets")\(viewModel.checkWeatherSymbol(symbolName: weatherKitManager.currentWeather?.symbolName ?? "") ? ".fill" : "")")
                                             .resizable()
@@ -67,10 +66,10 @@ struct HomeView: View {
                                     }
                             }
                         }
+                        GraphView(viewModel: viewModel,
+                                  groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
+                        .offset(y:70)
                     }
-                    GraphView(viewModel: viewModel,
-                              groupedWeather: viewModel.groupWeatherData(viewModel.prepareGraph(weathers: weatherKitManager.allWeather, safeWeather: weatherKitManager.safeWeather), safeWeather: weatherKitManager.safeWeather), descriptionModel: $descr)
-                    .offset(y:70)
                 }
                 .padding()
                 .task {
@@ -93,7 +92,19 @@ struct HomeView: View {
                     }
                 }
             } else {
-                Text("Perimission not granted")
+                VStack(spacing: 40){
+                    Image(systemName: "mappin.slash.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80, height: 80)
+                        .foregroundStyle(Color.descText)
+                    Text("Perimission not granted! Please update App Location permission.")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.descText)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal, 16)
             }
             
         }

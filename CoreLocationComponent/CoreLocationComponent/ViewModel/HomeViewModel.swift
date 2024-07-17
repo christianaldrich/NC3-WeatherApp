@@ -94,7 +94,6 @@ class HomeViewModel: ObservableObject {
         }
         
         self.description = DescriptionModel(conclusionDescription: desc, timeDescription: timeDesc)
-        print("update Description: \(description.conclusionDescription)")
     }
     
     func groupWeatherData(_ weatherData: [GraphModel], safeWeather: [TimeRange]) -> [GroupedWeather] {
