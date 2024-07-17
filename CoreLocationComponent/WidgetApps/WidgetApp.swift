@@ -181,8 +181,8 @@ struct WidgetApp: Widget {
             }
         }
         .configurationDisplayName("Weathery")
-        .description("Help you to know the best time for ordering food")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .description(LocalizedStringKey("Help you to know the best time for ordering food"))
+        .supportedFamilies([.systemSmall])
     }
 }
 
