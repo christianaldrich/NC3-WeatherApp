@@ -62,7 +62,7 @@ class HomeViewModel: ObservableObject {
             
             let adjustedEndTime = timeRange.endTime.addingTimeInterval(1)
             
-            if adjustedEndTime >= calendar.startOfDay(for: startOfTomorrow) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
+            if currentTime >= timeRange.startTime && currentTime <= timeRange.endTime && adjustedEndTime >= calendar.startOfDay(for: startOfTomorrow) && calendar.isDate(timeRange.startTime, inSameDayAs: startOfToday){
                 desc = LocalizedStringKey("Enjoy standard delivery all day")
                 timeDesc = LocalizedStringKey("No increasing delivery fee for today")
                 
