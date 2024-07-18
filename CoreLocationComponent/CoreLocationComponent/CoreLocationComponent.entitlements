@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.rey.CoreLocationComponent</string>
+		<string>group.com.pang.CoreLocationComponent</string>
 	</array>
 </dict>
 </plist>
